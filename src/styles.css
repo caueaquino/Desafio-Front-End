@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: rgb(235, 235, 235);
+}
+
+router-outlet {
+    width: 100%;
+}
+
+app-root {
+    width: 100%;
+}
+
+app-planner {
+    width: 100%;
+}
+
+mat-icon {
+    color: white;
+}
+
+mat-toolbar {
+    z-index: 11;
+}
+
+app-geral-view, app-plans {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+div .mat-menu-content {
+    background-color: white;
+}

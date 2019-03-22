@@ -1,0 +1,32 @@
+/* CSS Document */
+
+mat-drawer-container {
+    background: rgba(255, 255, 255, 0);
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+}
+
+mat-drawer {
+    background-color: white;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-button {
+    color: rgb(126, 126, 126);
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+    border-left: 10px solid rgb(231, 231, 231);
+    font-size: 16pt;
+    border-radius: 0;
+    font-weight: 400;
+}
+  
+.menu-button {
+    margin-left: 16px;
+    margin-top: -45px;
+    position: fixed;
+}

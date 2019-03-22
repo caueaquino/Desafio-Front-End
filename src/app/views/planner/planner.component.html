@@ -1,0 +1,10 @@
+<!-- HTML Document -->
+
+<mat-drawer-container [hasBackdrop]="false">
+    <mat-drawer #drawer [mode]="over">
+        <button mat-button class="nav-button" routerLink="/">Visão Geral</button>
+        <button mat-button class="nav-button" routerLink="/Planos">Planos</button>
+    </mat-drawer>
+        <button mat-icon-button class="menu-button" (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+        <router-outlet></router-outlet>
+</mat-drawer-container>
