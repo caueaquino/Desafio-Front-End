@@ -1,5 +1,9 @@
 /* CSS Document */
 
+* {
+    color: black;
+}
+
 mat-drawer-container {
     background: rgba(255, 255, 255, 0);
     width: 100%;
@@ -29,4 +33,107 @@ mat-drawer {
     margin-left: 16px;
     margin-top: -45px;
     position: fixed;
+}
+
+.color-white {
+    color: white;
+}
+
+.planner-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+mat-card {
+    border-radius: unset;
+    box-shadow:  0px 3px 10px rgba(0, 0, 0, 0.2)!important;
+}
+
+.title-card {
+    background-color: white;
+    padding: 15px;
+    width: 60%;
+    min-width: 300px;
+    max-width: 95%;
+    margin-top: 20px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    z-index: 4;
+}
+
+.plans-card {
+    display: flex;
+    margin-top: -30px;
+    z-index: 3;
+    background-color: white;
+    padding: 15px;
+    width: 60%;
+    min-width: 300px;
+    max-width: 95%;
+    min-height: 70vh;
+    margin-bottom: 10px;
+}
+
+mat-card h1 {
+    margin-left: 60px;
+    font-weight: 500;
+    width: 100%;
+    color: black;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    min-width: 300px;
+    max-width: 95%;
+    height: 30px;
+    font-size: 8pt;
+    font-weight: 400;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.div-footer {
+    height: 25px;
+    color: rgb(97, 97, 97);
+    min-width: 150px;
+}
+
+.footer-text1 {
+    border-top: 4px solid rgb(49, 49, 138);
+}
+
+.footer-text2 {
+    border-top: 4px solid rgb(65, 187, 224);
+}
+
+.footer-line {
+    border-top: 2px solid rgb(65, 187, 224);
+    width: 100%;
+    height: 27px;
+}
+
+.top-button {
+    height: 60px;
+    width: 60px;
+    position: fixed;
+    background-color: rgb(0, 174, 255);
+    z-index: 7;
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.301);
+    transition: all 0.2s;
+    right: 5vh;
+    bottom: 5vh;
+}
+
+.top-button-icon {
+    color: white;
+    font-size: 35px;
+    margin-left: -10px;
 }

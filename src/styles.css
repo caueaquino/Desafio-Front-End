@@ -11,10 +11,6 @@ body {
     background-color: rgb(235, 235, 235);
 }
 
-router-outlet {
-    width: 100%;
-}
-
 app-root {
     width: 100%;
 }
