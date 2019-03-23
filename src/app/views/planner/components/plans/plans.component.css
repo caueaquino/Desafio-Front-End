@@ -4,26 +4,6 @@
     color: black;
 }
 
-.div-add-plan {
-    width: 100%;
-    /* min-width: 300px; */
-    margin-top: -30px;
-}
-
-.button-add-plan {
-    margin-left: 10px;
-    background-color: rgb(0, 174, 255);
-    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.301);
-    height: 60px;
-    width: 60px;
-    z-index: 5;
-    transition: all 0.2s;
-}
-
-.button-add-plan:hover, .top-button:hover {
-    -webkit-transform: scale(1.1);
-}
-
 mat-icon {
     color: white;
     font-size: 35px;
@@ -39,7 +19,7 @@ mat-icon {
 }
   
 .example-list {
-    width: 100%;
+    width: 100%!important;
     min-height: 60px;
     background: white;
     border-radius: 4px;

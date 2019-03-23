@@ -76,6 +76,7 @@ mat-card {
     max-width: 95%;
     min-height: 70vh;
     margin-bottom: 10px;
+    justify-content: center;
 }
 
 mat-card h1 {
@@ -83,6 +84,33 @@ mat-card h1 {
     font-weight: 500;
     width: 100%;
     color: black;
+}
+
+.div-add-plan {
+    width: 60%;
+    min-width: 300px;
+    max-width: 95%;
+    margin-top: -30px;
+}
+
+.button-add-plan {
+    margin-left: 10px;
+    background-color: rgb(0, 174, 255);
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.301);
+    height: 60px;
+    width: 60px;
+    z-index: 5;
+    transition: all 0.2s;
+}
+
+.button-add-plan:hover, .top-button:hover {
+    -webkit-transform: scale(1.1);
+}
+
+.icons-button {
+    color: white;
+    font-size: 35px;
+    margin-left: -10px;
 }
 
 footer {
@@ -130,10 +158,4 @@ footer {
     transition: all 0.2s;
     right: 5vh;
     bottom: 5vh;
-}
-
-.top-button-icon {
-    color: white;
-    font-size: 35px;
-    margin-left: -10px;
 }

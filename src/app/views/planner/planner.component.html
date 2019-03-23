@@ -12,12 +12,12 @@
 
   <div class="planner-content">
     <mat-card class="title-card">
-      <h1>Visão Geral</h1>
+      <h1 [innerText]=" router.isActive('Planos', true) ? 'Planos' : 'Visão Geral' "></h1>
     </mat-card>
 
-    <div class="div-add-plan">
+    <div *ngIf="router.isActive('Planos', true)" class="div-add-plan">
       <button mat-icon-button class="button-add-plan">
-        <mat-icon>add</mat-icon>
+        <mat-icon class="icons-button">add</mat-icon>
       </button>
     </div>
 
@@ -40,4 +40,4 @@
 
 </mat-drawer-container>
 
-<button *ngIf="true" mat-icon-button class="top-button"><mat-icon class="top-button-icon">arrow_drop_up</mat-icon></button>
+<button *ngIf="true" mat-icon-button class="top-button"><mat-icon class="icons-button">arrow_drop_up</mat-icon></button>

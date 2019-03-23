@@ -18,8 +18,8 @@
 
       <img class="user-icon" src="../assets/images/user_icon.png" alt="icone-usuário">
 
-      <button mat-icon-button>
-        <mat-icon class="color-gray" [matMenuTriggerFor]="menu">more_vert</mat-icon>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon class="color-gray">more_vert</mat-icon>
       </button>
 
       <mat-menu #menu="matMenu">
@@ -30,12 +30,42 @@
           </span>
         </button>
 
-        <button mat-menu-item class="color-gray">
+        <button mat-menu-item class="color-gray" [matMenuTriggerFor]="menuStatus">
           <span class="action-span">
             <mat-icon class="action-icon">cached</mat-icon>
             Mudar status
           </span>
         </button>
+
+        <mat-menu #menuStatus="matMenu">
+          <button mat-menu-item class="color-gray">
+            <span class="action-span">
+              <mat-icon class="action-icon">play_arrow</mat-icon>
+              Iniciar
+            </span>
+          </button>
+
+          <button mat-menu-item class="color-gray">
+            <span class="action-span">
+              <mat-icon class="action-icon">done</mat-icon>
+              Concluir
+            </span>
+          </button>
+          
+          <button mat-menu-item class="color-gray">
+            <span class="action-span">
+              <mat-icon class="action-icon">pause</mat-icon>
+              Suspender
+            </span>
+          </button>
+          
+          <button mat-menu-item class="color-gray">
+            <span class="action-span">
+              <mat-icon class="action-icon">not_interested</mat-icon>
+              Cancelar
+            </span>
+          </button>
+        </mat-menu>
 
         <button mat-menu-item class="color-gray">
           <span class="action-span">
