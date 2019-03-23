@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { routerNgProbeToken } from '@angular/router/src/router_module';
+
+import { MatBottomSheet } from '@angular/material';
+
+import { CreatePlanComponent } from 'src/app/shared/bottom-sheet/create-plan/create-plan.component';
+
 
 @Component({
   selector: 'app-planner',
@@ -9,8 +13,13 @@ import { routerNgProbeToken } from '@angular/router/src/router_module';
 })
 export class PlannerComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private bottomSheet: MatBottomSheet) { }
 
   ngOnInit() {
+  }
+
+  openCreatePlanBottomSheet() {
+    this.bottomSheet.open(CreatePlanComponent);
   }
 }

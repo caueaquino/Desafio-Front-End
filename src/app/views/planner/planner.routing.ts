@@ -10,7 +10,11 @@ const plannerRoutes = [{
     children: [
         { path : '', redirectTo: 'VisaoGeral'},
         { path: 'VisaoGeral', component: GeralViewComponent },
-        { path: 'Planos', component: PlansComponent}
+        { path: 'Planos', component: PlansComponent, 
+          children: [
+            {path: 'CriarPlano', component: PlansComponent }
+          ] 
+        },
     ]
 }];
 

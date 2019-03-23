@@ -16,7 +16,7 @@
     </mat-card>
 
     <div *ngIf="router.isActive('Planos', true)" class="div-add-plan">
-      <button mat-icon-button class="button-add-plan">
+      <button mat-icon-button class="button-add-plan" (click)="openCreatePlanBottomSheet()">
         <mat-icon class="icons-button">add</mat-icon>
       </button>
     </div>

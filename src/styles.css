@@ -37,3 +37,12 @@ app-geral-view, app-plans {
 div .mat-menu-content {
     background-color: white;
 }
+
+.mat-bottom-sheet-container {
+    background-color: white!important;
+    min-height: 95vh;
+}
+
+.mat-tab-label {
+    color: black!important;
+}
