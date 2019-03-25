@@ -5,12 +5,11 @@ export interface Plan {
     planResponsible: string;
     beginDate: Date;
     endDate: Date;
-
     details: {
         description: string;
         interested: string[];
         cost: DoubleRange;
+        status: string;
     };
-
     childPlans: Plan[];
 }

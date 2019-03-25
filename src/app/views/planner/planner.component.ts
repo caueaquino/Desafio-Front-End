@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -23,5 +24,10 @@ export class PlannerComponent implements OnInit {
     const bs = this.bottomSheet.open(CreatePlanComponent);
 
     bs.afterDismissed().subscribe(() => this.router.navigate(['/Planos']));
+  }
+
+  goTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   }
 }

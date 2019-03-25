@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { AngularMaterialModule } from '../modules/angular-material.module';
 
 import { CreatePlanComponent } from './create-plan/create-plan.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DialogModule } from '../dialogs/dialog.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +13,10 @@ import { CreatePlanComponent } from './create-plan/create-plan.component';
   ],
   imports: [
     CommonModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    DialogModule
   ],
   entryComponents: [
     CreatePlanComponent

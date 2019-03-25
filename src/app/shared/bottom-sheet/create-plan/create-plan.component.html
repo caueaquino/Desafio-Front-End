@@ -3,15 +3,75 @@
 <mat-toolbar>
   <button mat-icon-button class="cancel-button" (click)="bottomSheetRef.dismiss()"><mat-icon class="color-black font-icon">close</mat-icon></button>
   <span class="color-black">Cadastrar plano</span>
-  <button mat-icon-button class="button-confirm"><mat-icon class="color-black font-icon">check</mat-icon></button>
+  <button mat-icon-button class="button-confirm" (click)="confirmButtonCreatePlan()"><mat-icon class="color-black font-icon">check</mat-icon></button>
 </mat-toolbar>
   
 <mat-tab-group>
-  <mat-tab label="Geral">
-    geral
+  <mat-tab label="GERAL">
+    <form class="example-form" [formGroup]="formPlan">
+      <mat-form-field class="example-full-width">
+        <input matInput #name maxlength="200" placeholder="Nome (O que?)" formControlName="planName">
+        <mat-hint align="end">{{name.value.length}} / 200</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+          <mat-label>Tipo do plano</mat-label>
+          <mat-select formControlName="planType">
+            <mat-option *ngFor="let plan of plansType" [value]="plan">
+              {{plan}}
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Responsável (quem?)" formControlName="planResponsible" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let person of people" [value]="person" >
+            {{ person }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <div class="dates-container">
+        <mat-form-field class="example-half-width">
+            <input matInput [matDatepicker]="beginDate" placeholder="Início" formControlName="beginDate">
+            <mat-datepicker-toggle matSuffix [for]="beginDate"></mat-datepicker-toggle>
+            <mat-datepicker #beginDate></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="example-half-width">
+          <input matInput [matDatepicker]="endDate" placeholder="Término" formControlName="endDate">
+          <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+          <mat-datepicker #endDate></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Pertence ao plano" formControlName="childPlans">
+      </mat-form-field>
+    </form>
   </mat-tab>
  
-  <mat-tab label="Detalhes">
-    detalhes
+  <mat-tab label="DETALHES">
+    <form class="example-form" [formGroup]="formPlan">
+      <mat-form-field class="example-full-width" formGroupName="details">
+        <textarea matInput #description maxlength="1000" placeholder="Descrição" formControlName="description"></textarea>
+        <mat-hint align="end">{{description.value.length}} / 1000</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" formGroupName="details">
+        <mat-label>Pessoas interessadas</mat-label>
+        <mat-select formControlName="interested" multiple>
+          <mat-option *ngFor="let person of people" [value]="person">
+            {{person}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-half-width" formGroupName="details">
+      <span matPrefix class="prefix-cost">R$ &nbsp;</span>
+      <input matInput type="number" placeholder="Custo estimado" formControlName="cost">
+      </mat-form-field>
+    </form>
   </mat-tab>
 </mat-tab-group>

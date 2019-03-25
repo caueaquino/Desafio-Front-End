@@ -47,3 +47,13 @@ div .mat-menu-content {
 .mat-tab-label {
     color: black!important;
 }
+
+mat-ink-bar {
+    background-color: rgb(0, 153, 255)!important;
+}
+
+mat-tab-header {
+    width: 100%!important;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.171)!important;
+    border-bottom: 0!important;
+}

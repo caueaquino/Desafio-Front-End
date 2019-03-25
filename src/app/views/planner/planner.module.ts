@@ -11,6 +11,9 @@ import { PlannerComponent } from './planner.component';
 import { GeralViewComponent } from './components/geral-view/geral-view.component';
 import { PlansComponent } from './components/plans/plans.component';
 
+import { ServicesModule } from 'src/app/shared/services/services.module';
+import { DialogModule } from 'src/app/shared/dialogs/dialog.module';
+
 @NgModule({
   declarations: [
     PlannerComponent,
@@ -21,7 +24,9 @@ import { PlansComponent } from './components/plans/plans.component';
     CommonModule,
     PlannerRouting,
     AngularMaterialModule,
-    BottomSheetModule
+    BottomSheetModule,
+    ServicesModule,
+    DialogModule
   ]
 })
 export class PlannerModule { }

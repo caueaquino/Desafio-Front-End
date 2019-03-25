@@ -28,7 +28,17 @@ mat-drawer {
     border-radius: 0;
     font-weight: 400;
 }
-  
+
+.mat-active {
+    background-color: rgba(1, 141, 255, 0.164);
+    border-left: 10px solid rgb(74, 182, 255);
+    color: black;
+}
+
+.nav-button:active, .nav-button:link {
+    border-left: 10px solid rgb(96, 151, 255);
+}
+
 .menu-button {
     margin-left: 16px;
     margin-top: -45px;

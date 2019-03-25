@@ -2,8 +2,8 @@
 
 <mat-drawer-container [hasBackdrop]="false">
   <mat-drawer #drawer [mode]="over">
-    <button mat-button class="nav-button" routerLink="/VisaoGeral">Visão Geral</button>
-    <button mat-button class="nav-button" routerLink="/Planos">Planos</button>
+    <button mat-button class="nav-button" routerLinkActive="mat-active" routerLink="/VisaoGeral">Visão Geral</button>
+    <button mat-button class="nav-button" routerLinkActive="mat-active" routerLink="/Planos">Planos</button>
   </mat-drawer>
 
   <button mat-icon-button class="menu-button" (click)="drawer.toggle()">
@@ -40,4 +40,4 @@
 
 </mat-drawer-container>
 
-<button *ngIf="true" mat-icon-button class="top-button"><mat-icon class="icons-button">arrow_drop_up</mat-icon></button>
+<button *ngIf="true" mat-icon-button class="top-button" (click)="goTop()"><mat-icon class="icons-button">arrow_drop_up</mat-icon></button>
