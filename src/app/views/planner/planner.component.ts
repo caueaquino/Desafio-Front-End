@@ -20,6 +20,8 @@ export class PlannerComponent implements OnInit {
   }
 
   openCreatePlanBottomSheet() {
-    this.bottomSheet.open(CreatePlanComponent);
+    const bs = this.bottomSheet.open(CreatePlanComponent);
+
+    bs.afterDismissed().subscribe(() => this.router.navigate(['/Planos']));
   }
 }

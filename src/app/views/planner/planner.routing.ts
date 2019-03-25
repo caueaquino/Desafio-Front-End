@@ -12,7 +12,8 @@ const plannerRoutes = [{
         { path: 'VisaoGeral', component: GeralViewComponent },
         { path: 'Planos', component: PlansComponent, 
           children: [
-            {path: 'CriarPlano', component: PlansComponent }
+            { path: '', component: PlansComponent },
+            { path: 'CriarPlano', component: PlansComponent }
           ] 
         },
     ]

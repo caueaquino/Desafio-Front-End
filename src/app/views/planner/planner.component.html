@@ -12,11 +12,11 @@
 
   <div class="planner-content">
     <mat-card class="title-card">
-      <h1 [innerText]=" router.isActive('Planos', true) ? 'Planos' : 'Visão Geral' "></h1>
+      <h1 [innerText]=" router.isActive('VisaoGeral', true) ? 'Visão Geral' : 'Planos' "></h1>
     </mat-card>
 
-    <div *ngIf="router.isActive('Planos', true)" class="div-add-plan">
-      <button mat-icon-button class="button-add-plan" (click)="openCreatePlanBottomSheet()">
+    <div *ngIf="!router.isActive('VisaoGeral', true)" class="div-add-plan">
+      <button mat-icon-button class="button-add-plan" routerLink="CriarPlano" (click)="openCreatePlanBottomSheet()">
         <mat-icon class="icons-button">add</mat-icon>
       </button>
     </div>

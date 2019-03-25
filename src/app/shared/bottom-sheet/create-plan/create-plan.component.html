@@ -1,6 +1,17 @@
 <!-- HTML Document -->
 
+<mat-toolbar>
+  <button mat-icon-button class="cancel-button" (click)="bottomSheetRef.dismiss()"><mat-icon class="color-black font-icon">close</mat-icon></button>
+  <span class="color-black">Cadastrar plano</span>
+  <button mat-icon-button class="button-confirm"><mat-icon class="color-black font-icon">check</mat-icon></button>
+</mat-toolbar>
+  
 <mat-tab-group>
-  <mat-tab label="Geral"></mat-tab>
-  <mat-tab label="Detalhes"></mat-tab>
+  <mat-tab label="Geral">
+    geral
+  </mat-tab>
+ 
+  <mat-tab label="Detalhes">
+    detalhes
+  </mat-tab>
 </mat-tab-group>

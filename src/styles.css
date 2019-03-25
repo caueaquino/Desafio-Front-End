@@ -41,6 +41,7 @@ div .mat-menu-content {
 .mat-bottom-sheet-container {
     background-color: white!important;
     min-height: 95vh;
+    padding: 0!important;
 }
 
 .mat-tab-label {
