@@ -1,10 +1,43 @@
 <!-- HTML Document -->
 
 <mat-drawer-container [hasBackdrop]="false">
-    <mat-drawer #drawer [mode]="over">
-        <button mat-button class="nav-button" routerLink="/">Visão Geral</button>
-        <button mat-button class="nav-button" routerLink="/Planos">Planos</button>
-    </mat-drawer>
-        <button mat-icon-button class="menu-button" (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
-        <router-outlet></router-outlet>
+  <mat-drawer #drawer [mode]="over">
+    <button mat-button class="nav-button" routerLink="/VisaoGeral">Visão Geral</button>
+    <button mat-button class="nav-button" routerLink="/Planos">Planos</button>
+  </mat-drawer>
+
+  <button mat-icon-button class="menu-button" (click)="drawer.toggle()">
+    <mat-icon class="color-white">menu</mat-icon>
+  </button>
+
+  <div class="planner-content">
+    <mat-card class="title-card">
+      <h1 [innerText]=" router.isActive('VisaoGeral', true) ? 'Visão Geral' : 'Planos' "></h1>
+    </mat-card>
+
+    <div *ngIf="!router.isActive('VisaoGeral', true)" class="div-add-plan">
+      <button mat-icon-button class="button-add-plan" routerLink="CriarPlano" (click)="openCreatePlanBottomSheet()">
+        <mat-icon class="icons-button">add</mat-icon>
+      </button>
+    </div>
+
+    <mat-card class="plans-card">
+      <router-outlet></router-outlet>
+    </mat-card>
+
+    <footer>
+      <div class="footer-text1 div-footer">
+        ©FORLOGIC 2019
+      </div>
+
+      <div class="footer-text2 div-footer">
+        PLANNER
+      </div>
+
+      <div class="footer-line"></div>
+    </footer>
+  </div>
+
 </mat-drawer-container>
+
+<button *ngIf="true" mat-icon-button class="top-button"><mat-icon class="icons-button">arrow_drop_up</mat-icon></button>

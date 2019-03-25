@@ -11,10 +11,6 @@ body {
     background-color: rgb(235, 235, 235);
 }
 
-router-outlet {
-    width: 100%;
-}
-
 app-root {
     width: 100%;
 }
@@ -35,8 +31,19 @@ app-geral-view, app-plans {
     display: flex;
     align-items: center;
     flex-direction: column;
+    width: 100%!important;
 }
 
 div .mat-menu-content {
     background-color: white;
+}
+
+.mat-bottom-sheet-container {
+    background-color: white!important;
+    min-height: 95vh;
+    padding: 0!important;
+}
+
+.mat-tab-label {
+    color: black!important;
 }

@@ -1,0 +1,41 @@
+/* CSS Document */
+
+
+mat-tab-group {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+mat-toolbar {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    width: 100%!important;
+    padding: 10px;
+}
+
+span {
+    font-size: 22pt;
+    font-weight: 400;
+    width: 100%;
+    margin-left: 10px;
+}
+
+.color-black {
+    color: black;
+}
+
+.font-icon {
+    font-size: 35px;
+    margin-left: -10px;
+}
+
+.button-confirm {
+    margin-right: 10px;
+}
+
+.cancel-button {
+    margin-left: 10px;
+}

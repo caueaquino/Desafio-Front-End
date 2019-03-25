@@ -7,7 +7,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
   styleUrls: ['./plans.component.css']
 })
 export class PlansComponent implements OnInit {
-
+  
   private plansList: string[];
 
   constructor() {

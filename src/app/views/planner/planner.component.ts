@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { MatBottomSheet } from '@angular/material';
+
+import { CreatePlanComponent } from 'src/app/shared/bottom-sheet/create-plan/create-plan.component';
+
 
 @Component({
   selector: 'app-planner',
@@ -7,8 +13,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlannerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,
+              private bottomSheet: MatBottomSheet) { }
 
   ngOnInit() {
+  }
+
+  openCreatePlanBottomSheet() {
+    const bs = this.bottomSheet.open(CreatePlanComponent);
+
+    bs.afterDismissed().subscribe(() => this.router.navigate(['/Planos']));
   }
 }

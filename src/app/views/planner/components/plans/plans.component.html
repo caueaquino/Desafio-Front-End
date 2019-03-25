@@ -1,77 +1,79 @@
 <!-- HTML Document -->
 
-<mat-card class="title-card">
-    <h1>Planos</h1>
-    <button mat-icon-button class="filter-button color-gray"><mat-icon>filter_list</mat-icon></button>
-</mat-card>
 
-<div class="div-add-plan">
-    <button mat-icon-button class="button-add-plan"><mat-icon>add</mat-icon></button>
+<div cdkDropList [cdkDropListData]="plansList" class="example-list" (cdkDropListDropped)="drop($event)">
+
+  <div class="example-box" *ngFor="let plan of plansList" cdkDrag>
+    <div class="info-plan">
+      <span class="span-big">{{plan}}</span>
+      <span class="span-medium color-black">Aberto</span>
+      <span class="span-medium color-gray">Sem prazo definido</span>
+    </div>
+
+    <div class="action-plan">
+      <div class="info-plan">
+        <span class="span-medium color-black text-right">Usuário Qualiex</span>
+        <span class="span-medium color-gray text-right">usuário@qualiex.com.br</span>
+      </div>
+
+      <img class="user-icon" src="../assets/images/user_icon.png" alt="icone-usuário">
+
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon class="color-gray">more_vert</mat-icon>
+      </button>
+
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item class="color-gray">
+          <span class="action-span">
+            <mat-icon class="action-icon">edit</mat-icon>
+            Editar
+          </span>
+        </button>
+
+        <button mat-menu-item class="color-gray" [matMenuTriggerFor]="menuStatus">
+          <span class="action-span">
+            <mat-icon class="action-icon">cached</mat-icon>
+            Mudar status
+          </span>
+        </button>
+
+        <mat-menu #menuStatus="matMenu">
+          <button mat-menu-item class="color-gray">
+            <span class="action-span">
+              <mat-icon class="action-icon">play_arrow</mat-icon>
+              Iniciar
+            </span>
+          </button>
+
+          <button mat-menu-item class="color-gray">
+            <span class="action-span">
+              <mat-icon class="action-icon">done</mat-icon>
+              Concluir
+            </span>
+          </button>
+          
+          <button mat-menu-item class="color-gray">
+            <span class="action-span">
+              <mat-icon class="action-icon">pause</mat-icon>
+              Suspender
+            </span>
+          </button>
+          
+          <button mat-menu-item class="color-gray">
+            <span class="action-span">
+              <mat-icon class="action-icon">not_interested</mat-icon>
+              Cancelar
+            </span>
+          </button>
+        </mat-menu>
+
+        <button mat-menu-item class="color-gray">
+          <span class="action-span">
+            <mat-icon class="action-icon">delete</mat-icon>
+            Remover
+          </span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
 </div>
-
-<mat-card class="plans-card">
-    <div
-        cdkDropList
-        [cdkDropListData]="plansList"
-        class="example-list"
-        (cdkDropListDropped)="drop($event)">
-        
-        <div class="example-box" *ngFor="let plan of plansList" cdkDrag>
-            <div class="info-plan">    
-                <span class="span-big">{{plan}}</span>
-                <span class="span-medium color-black">Aberto</span>
-                <span class="span-medium color-gray">Sem prazo definido</span>
-            </div>
-
-            <div class="action-plan">
-                <div class="info-plan">    
-                    <span class="span-medium color-black text-right">Usuário Qualiex</span>
-                    <span class="span-medium color-gray text-right">usuário@qualiex.com.br</span>
-                </div>
-
-                <img class="user-icon" src="../assets/images/user_icon.png" alt="icone-usuário">
-
-                <button mat-icon-button>
-                    <mat-icon class="color-gray" [matMenuTriggerFor]="menu">more_vert</mat-icon>
-                </button>
-
-                <mat-menu #menu="matMenu">
-                        <button mat-menu-item class="color-gray">
-                            <span class="action-span">
-                                <mat-icon class="action-icon">edit</mat-icon>
-                                Editar
-                            </span>
-                        </button>
-
-                        <button mat-menu-item class="color-gray">
-                            <span class="action-span">
-                                <mat-icon class="action-icon">cached</mat-icon>
-                                Mudar status
-                            </span>
-                        </button>
-
-                        <button mat-menu-item class="color-gray">
-                            <span class="action-span">
-                                <mat-icon class="action-icon">delete</mat-icon>
-                                Remover
-                            </span>
-                        </button>
-                </mat-menu>
-            </div>
-        </div>
-    </div>
-</mat-card>
-
-<footer>
-    <div class="footer-text1 div-footer">
-        ©FORLOGIC 2019
-    </div>
-
-    <div class="footer-text2 div-footer">
-        PLANNER
-    </div>
-
-    <div class="footer-line"></div>
-</footer>
-
-<button *ngIf="true" mat-icon-button class="top-button"><mat-icon>arrow_drop_up</mat-icon></button>

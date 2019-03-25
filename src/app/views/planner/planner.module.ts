@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { AngularMaterialModule } from 'src/app/shared/modules/angular-material.module';
 
+import { BottomSheetModule } from 'src/app/shared/bottom-sheet/bottom-sheet.module';
+
 import { PlannerRouting } from './planner.routing';
 
 import { PlannerComponent } from './planner.component';
@@ -18,7 +20,8 @@ import { PlansComponent } from './components/plans/plans.component';
   imports: [
     CommonModule,
     PlannerRouting,
-    AngularMaterialModule
+    AngularMaterialModule,
+    BottomSheetModule
   ]
 })
 export class PlannerModule { }
