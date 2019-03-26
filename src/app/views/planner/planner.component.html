@@ -2,8 +2,9 @@
 
 <mat-drawer-container [hasBackdrop]="false">
   <mat-drawer #drawer [mode]="over">
-    <button mat-button class="nav-button" routerLinkActive="mat-active" routerLink="/VisaoGeral">Visão Geral</button>
-    <button mat-button class="nav-button" routerLinkActive="mat-active" routerLink="/Planos">Planos</button>
+    <button mat-button class="nav-button" (click)="planService.setTitle(1)" routerLinkActive="mat-active" routerLink="/VisaoGeral">Visão Geral</button>
+    <button mat-button class="nav-button" (click)="planService.setTitle(2)" routerLinkActive="mat-active" routerLink="/Planos">Planos</button>
+    <button mat-button class="nav-button" (click)="planService.setTitle(3)" routerLinkActive="mat-active" routerLink="/TiposDePlano">Tipos de Plano</button>
   </mat-drawer>
 
   <button mat-icon-button class="menu-button" (click)="drawer.toggle()">
@@ -12,11 +13,11 @@
 
   <div class="planner-content">
     <mat-card class="title-card">
-      <h1 [innerText]=" router.isActive('VisaoGeral', true) ? 'Visão Geral' : 'Planos' "></h1>
+      <h1>{{planService.title}}</h1>
     </mat-card>
 
     <div *ngIf="!router.isActive('VisaoGeral', true)" class="div-add-plan">
-      <button mat-icon-button class="button-add-plan" routerLink="CriarPlano" (click)="openCreatePlanBottomSheet()">
+      <button mat-icon-button class="button-add-plan" routerLink="CriarPlano" (click)=" router.isActive('Planos', true) ? openCreatePlanBottomSheet() : openCreateTypePlanBottomSheet()">
         <mat-icon class="icons-button">add</mat-icon>
       </button>
     </div>

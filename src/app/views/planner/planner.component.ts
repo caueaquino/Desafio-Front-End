@@ -5,6 +5,9 @@ import { Router } from '@angular/router';
 import { MatBottomSheet } from '@angular/material';
 
 import { CreatePlanComponent } from 'src/app/shared/bottom-sheet/create-plan/create-plan.component';
+import { CreateTypePlanComponent } from 'src/app/shared/bottom-sheet/create-type-plan/create-type-plan.component';
+
+import { PlanService } from 'src/app/shared/services/plan.service';
 
 
 @Component({
@@ -15,7 +18,8 @@ import { CreatePlanComponent } from 'src/app/shared/bottom-sheet/create-plan/cre
 export class PlannerComponent implements OnInit {
 
   constructor(private router: Router,
-              private bottomSheet: MatBottomSheet) { }
+              private bottomSheet: MatBottomSheet,
+              private planService: PlanService) { }
 
   ngOnInit() {
   }
@@ -29,5 +33,11 @@ export class PlannerComponent implements OnInit {
   goTop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
+  }
+
+  openCreateTypePlanBottomSheet() {
+    const bs = this.bottomSheet.open(CreateTypePlanComponent);
+
+    bs.afterDismissed().subscribe(() => this.router.navigate(['/TiposDePlano']));
   }
 }

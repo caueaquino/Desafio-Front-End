@@ -10,6 +10,7 @@ import { PlannerRouting } from './planner.routing';
 import { PlannerComponent } from './planner.component';
 import { GeralViewComponent } from './components/geral-view/geral-view.component';
 import { PlansComponent } from './components/plans/plans.component';
+import { PlansTypeComponent } from './components/plans-type/plans-type.component';
 
 import { ServicesModule } from 'src/app/shared/services/services.module';
 import { DialogModule } from 'src/app/shared/dialogs/dialog.module';
@@ -18,7 +19,8 @@ import { DialogModule } from 'src/app/shared/dialogs/dialog.module';
   declarations: [
     PlannerComponent,
     GeralViewComponent,
-    PlansComponent
+    PlansComponent,
+    PlansTypeComponent
   ],
   imports: [
     CommonModule,

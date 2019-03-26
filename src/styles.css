@@ -27,7 +27,7 @@ mat-toolbar {
     z-index: 11;
 }
 
-app-geral-view, app-plans {
+app-geral-view, app-plans, app-plans-type {
     display: flex;
     align-items: center;
     flex-direction: column;

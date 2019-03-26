@@ -1,0 +1,44 @@
+/* CSS Document */
+
+mat-list {
+    width: 100%;
+    margin-top: 50px;
+}
+
+.type-list-content {
+    margin-top: 30px;
+}
+
+mat-list-iten, mat-divider {
+    width: 90%!important;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.span-type-plan {
+    width: 100%;
+    margin-left: 10px;
+    font-size: 18pt;
+    font-weight: 500;
+}
+
+.color-gray {
+    color: gray;
+}
+
+.icon-big {
+    font-size: 30px;
+    margin-left: -5px;
+}
+
+.no-plan-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.no-plan-container h2 {
+    color: rgb(44, 44, 44);
+    font-weight: 500;
+}

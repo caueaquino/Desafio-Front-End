@@ -6,10 +6,12 @@ import { AngularMaterialModule } from '../modules/angular-material.module';
 import { CreatePlanComponent } from './create-plan/create-plan.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogModule } from '../dialogs/dialog.module';
+import { CreateTypePlanComponent } from './create-type-plan/create-type-plan.component';
 
 @NgModule({
   declarations: [
-    CreatePlanComponent
+    CreatePlanComponent,
+    CreateTypePlanComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { DialogModule } from '../dialogs/dialog.module';
     DialogModule
   ],
   entryComponents: [
-    CreatePlanComponent
+    CreatePlanComponent,
+    CreateTypePlanComponent
   ]
 })
 export class BottomSheetModule { }

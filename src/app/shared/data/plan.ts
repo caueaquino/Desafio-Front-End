@@ -5,6 +5,7 @@ export interface Plan {
     planResponsible: string;
     beginDate: Date;
     endDate: Date;
+    showDate: string;
     details: {
         description: string;
         interested: string[];

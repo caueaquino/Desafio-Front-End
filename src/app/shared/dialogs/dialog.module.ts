@@ -6,12 +6,16 @@ import { AngularMaterialModule } from '../modules/angular-material.module';
 import { ConfirmCreatePlanDialogComponent } from './confirm-create-plan-dialog/confirm-create-plan-dialog.component';
 import { ErroConfirmCreatePlanDialogComponent } from './erro-confirm-create-plan-dialog/erro-confirm-create-plan-dialog.component';
 import { SucessCreatePlanDialogComponent } from './sucess-create-plan-dialog/sucess-create-plan-dialog.component';
+import { ConfirmCreateTypePlanDialogComponent } from './confirm-create-type-plan-dialog/confirm-create-type-plan-dialog.component';
+import { SucessCreatePlanTypeDialogComponent } from './sucess-create-plan-type-dialog/sucess-create-plan-type-dialog.component';
 
 @NgModule({
   declarations: [
     ConfirmCreatePlanDialogComponent,
     ErroConfirmCreatePlanDialogComponent,
-    SucessCreatePlanDialogComponent
+    SucessCreatePlanDialogComponent,
+    ConfirmCreateTypePlanDialogComponent,
+    SucessCreatePlanTypeDialogComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +24,9 @@ import { SucessCreatePlanDialogComponent } from './sucess-create-plan-dialog/suc
   entryComponents: [
     ConfirmCreatePlanDialogComponent,
     ErroConfirmCreatePlanDialogComponent,
-    SucessCreatePlanDialogComponent
+    SucessCreatePlanDialogComponent,
+    ConfirmCreateTypePlanDialogComponent,
+    SucessCreatePlanTypeDialogComponent
   ]
 })
 export class DialogModule { }

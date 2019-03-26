@@ -1,11 +1,15 @@
 <!-- HTML Document -->
 
 <mat-toolbar>
-  <button mat-icon-button class="cancel-button" (click)="bottomSheetRef.dismiss()"><mat-icon class="color-black font-icon">close</mat-icon></button>
+  <button mat-icon-button class="cancel-button" (click)="bottomSheetRef.dismiss()">
+    <mat-icon class="color-black font-icon">close</mat-icon>
+  </button>
   <span class="color-black">Cadastrar plano</span>
-  <button mat-icon-button class="button-confirm" (click)="confirmButtonCreatePlan()"><mat-icon class="color-black font-icon">check</mat-icon></button>
+  <button mat-icon-button class="button-confirm" (click)="confirmButtonCreatePlan()">
+    <mat-icon class="color-black font-icon">check</mat-icon>
+  </button>
 </mat-toolbar>
-  
+
 <mat-tab-group>
   <mat-tab label="GERAL">
     <form class="example-form" [formGroup]="formPlan">
@@ -15,28 +19,28 @@
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-          <mat-label>Tipo do plano</mat-label>
-          <mat-select formControlName="planType">
-            <mat-option *ngFor="let plan of plansType" [value]="plan">
-              {{plan}}
-            </mat-option>
-          </mat-select>
+        <mat-label>Tipo do plano</mat-label>
+        <mat-select formControlName="planType">
+          <mat-option *ngFor="let type of plansType" [value]="type">
+            {{type}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
         <input matInput placeholder="Responsável (quem?)" formControlName="planResponsible" [matAutocomplete]="auto">
         <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let person of people" [value]="person" >
-            {{ person }}
+          <mat-option *ngFor="let person of people" [value]="person">
+            {{person}}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
 
       <div class="dates-container">
         <mat-form-field class="example-half-width">
-            <input matInput [matDatepicker]="beginDate" placeholder="Início" formControlName="beginDate">
-            <mat-datepicker-toggle matSuffix [for]="beginDate"></mat-datepicker-toggle>
-            <mat-datepicker #beginDate></mat-datepicker>
+          <input matInput [matDatepicker]="beginDate" placeholder="Início" formControlName="beginDate">
+          <mat-datepicker-toggle matSuffix [for]="beginDate"></mat-datepicker-toggle>
+          <mat-datepicker #beginDate></mat-datepicker>
         </mat-form-field>
 
         <mat-form-field class="example-half-width">
@@ -47,15 +51,22 @@
       </div>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Pertence ao plano" formControlName="childPlans">
+        <mat-label>Pertence ao plano</mat-label>
+        <mat-select formControlName="childPlans">
+          <mat-option [value]=null>Nenhum</mat-option>
+          <mat-option *ngFor="let plan of plans" [value]="plan">
+            {{plan.planName}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
     </form>
   </mat-tab>
- 
+
   <mat-tab label="DETALHES">
     <form class="example-form" [formGroup]="formPlan">
       <mat-form-field class="example-full-width" formGroupName="details">
-        <textarea matInput #description maxlength="1000" placeholder="Descrição" formControlName="description"></textarea>
+        <textarea matInput #description maxlength="1000" placeholder="Descrição"
+          formControlName="description"></textarea>
         <mat-hint align="end">{{description.value.length}} / 1000</mat-hint>
       </mat-form-field>
 
@@ -69,8 +80,8 @@
       </mat-form-field>
 
       <mat-form-field class="example-half-width" formGroupName="details">
-      <span matPrefix class="prefix-cost">R$ &nbsp;</span>
-      <input matInput type="number" placeholder="Custo estimado" formControlName="cost">
+        <span matPrefix class="prefix-cost">R$ &nbsp;</span>
+        <input matInput type="number" placeholder="Custo estimado" formControlName="cost">
       </mat-form-field>
     </form>
   </mat-tab>

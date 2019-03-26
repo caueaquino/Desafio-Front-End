@@ -1,3 +1,4 @@
+import { PlansTypeComponent } from './components/plans-type/plans-type.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
@@ -10,13 +11,20 @@ const plannerRoutes = [{
     children: [
         { path : '', redirectTo: 'VisaoGeral'},
         { path: 'VisaoGeral', component: GeralViewComponent },
-        { path: 'Planos', component: PlansComponent, 
+        { path: 'Planos', component: PlansComponent,
           children: [
             { path: '', component: PlansComponent },
             { path: 'CriarPlano', component: PlansComponent },
-            { paht: 'EditarPlane', component: PlansComponent }
-          ] 
+            { paht: 'EditarPlano', component: PlansComponent }
+          ]
         },
+        { path: 'TiposDePlano', component: PlansTypeComponent,
+          children: [
+            { path: '', component: PlansTypeComponent },
+            { path: 'CriarPlano', component: PlansTypeComponent },
+            { path: 'EditarPlano', component: PlansTypeComponent }
+          ]
+        }
     ]
 }];
 

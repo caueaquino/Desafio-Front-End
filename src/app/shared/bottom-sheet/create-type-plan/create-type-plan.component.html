@@ -1,0 +1,17 @@
+<!-- HTML Document -->
+
+<mat-toolbar>
+  <button mat-icon-button class="cancel-button" (click)="bottomSheetRef.dismiss()">
+    <mat-icon class="color-black font-icon">close</mat-icon>
+  </button>
+  <span class="color-black">Cadastrar tipo</span>
+  <button mat-icon-button class="button-confirm" (click)="confirmButtonCreatePlanType()">
+    <mat-icon class="color-black font-icon">check</mat-icon>
+  </button>
+</mat-toolbar>
+
+<form class="example-form" [formGroup]="formPlanType">
+    <mat-form-field class="example-full-width">
+        <input matInput #name maxlength="200" placeholder="Tipo do plano (nome)" formControlName="planTypeName">
+    </mat-form-field>
+</form>

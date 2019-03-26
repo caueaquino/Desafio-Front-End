@@ -18,16 +18,17 @@ export class PlansComponent implements OnInit {
   private plansList: Plan[];
 
   constructor(private planService: PlanService) {
+    this.user = this.planService.getUser();
     this.plansList = this.planService.getPlans();
   }
 
   ngOnInit() {
   }
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    
+
     } else {
       transferArrayItem(event.previousContainer.data,
                         event.container.data,
@@ -40,5 +41,6 @@ export class PlansComponent implements OnInit {
   updateStatusPlan(plan: Plan, status: string) {
     this.user = this.planService.getUser();
     plan.details.status = status;
+    plan = this.planService.setShowDate(plan);
   }
 }
