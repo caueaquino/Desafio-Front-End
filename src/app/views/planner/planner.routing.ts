@@ -13,7 +13,8 @@ const plannerRoutes = [{
         { path: 'Planos', component: PlansComponent, 
           children: [
             { path: '', component: PlansComponent },
-            { path: 'CriarPlano', component: PlansComponent }
+            { path: 'CriarPlano', component: PlansComponent },
+            { paht: 'EditarPlane', component: PlansComponent }
           ] 
         },
     ]

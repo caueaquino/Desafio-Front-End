@@ -13,10 +13,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule, MatNativeDateModule } from '@angular/material';
-
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 @NgModule({
@@ -37,7 +37,8 @@ import { MatDialogModule, MatNativeDateModule } from '@angular/material';
     MatInputModule,
     MatSelectModule,
     MatDialogModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatAutocompleteModule
   ],
   exports: [
     MatNativeDateModule,
@@ -55,7 +56,8 @@ import { MatDialogModule, MatNativeDateModule } from '@angular/material';
     MatInputModule,
     MatSelectModule,
     MatDialogModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatAutocompleteModule
   ]
 })
 export class AngularMaterialModule { }

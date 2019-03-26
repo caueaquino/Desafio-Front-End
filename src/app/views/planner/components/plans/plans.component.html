@@ -3,17 +3,21 @@
 
 <div cdkDropList [cdkDropListData]="plansList" class="example-list" (cdkDropListDropped)="drop($event)">
 
+  <div *ngIf="!plansList.length>0" class="no-plan-container">
+    <h2>Não há planos cadastrados !</h2>
+  </div>
+
   <div class="example-box" *ngFor="let plan of plansList" cdkDrag>
     <div class="info-plan">
-      <span class="span-big">{{plan}}</span>
-      <span class="span-medium color-black">Aberto</span>
-      <span class="span-medium color-gray">Sem prazo definido</span>
+      <span class="span-big">{{ plan.planName }}</span>
+      <span class="span-medium color-black">{{ plan.details.status }}</span>
+      <span class="span-medium color-gray">{{ plan.endDate }}</span>
     </div>
 
     <div class="action-plan">
       <div class="info-plan">
-        <span class="span-medium color-black text-right">Usuário Qualiex</span>
-        <span class="span-medium color-gray text-right">usuário@qualiex.com.br</span>
+        <span class="span-medium color-black text-right">{{ user.name }}</span>
+        <span class="span-medium color-gray text-right">{{ user.email }}</span>
       </div>
 
       <img class="user-icon" src="../assets/images/user_icon.png" alt="icone-usuário">
@@ -38,28 +42,28 @@
         </button>
 
         <mat-menu #menuStatus="matMenu">
-          <button mat-menu-item class="color-gray">
+          <button mat-menu-item class="color-gray" (click)="updateStatusPlan(plan, 'Aberto')">
             <span class="action-span">
               <mat-icon class="action-icon">play_arrow</mat-icon>
               Iniciar
             </span>
           </button>
 
-          <button mat-menu-item class="color-gray">
+          <button mat-menu-item class="color-gray" (click)="updateStatusPlan(plan, 'Concluído')">
             <span class="action-span">
               <mat-icon class="action-icon">done</mat-icon>
               Concluir
             </span>
           </button>
           
-          <button mat-menu-item class="color-gray">
+          <button mat-menu-item class="color-gray" (click)="updateStatusPlan(plan, 'Aguardando início')">
             <span class="action-span">
               <mat-icon class="action-icon">pause</mat-icon>
               Suspender
             </span>
           </button>
           
-          <button mat-menu-item class="color-gray">
+          <button mat-menu-item class="color-gray" (click)="updateStatusPlan(plan, 'Cancelado')">
             <span class="action-span">
               <mat-icon class="action-icon">not_interested</mat-icon>
               Cancelar

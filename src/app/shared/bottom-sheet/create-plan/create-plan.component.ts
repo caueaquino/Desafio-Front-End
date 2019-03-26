@@ -19,9 +19,7 @@ import { Plan } from '../../data/plan';
 export class CreatePlanComponent implements OnInit {
 
   private people: string[];
-  private plans: Plan[];
   private plansType: string[];
-
 
   private formPlan = this.formBuilder.group({
     planName: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
@@ -33,9 +31,10 @@ export class CreatePlanComponent implements OnInit {
       description: [null, [Validators.minLength(3), Validators.maxLength(1000)]],
       interested: [null, Validators.nullValidator],
       cost: [null, Validators.nullValidator],
-      status: ['aberto', Validators.nullValidator]
+      status: ['Aguardando início', Validators.nullValidator]
     }),
-    childPlans: [null, [Validators.nullValidator]]
+    childPlans: [null, [Validators.nullValidator]],
+    id: [this.planService.getIndexId()+1, [Validators.required]]
   });
 
   constructor(private bottomSheetRef: MatBottomSheetRef<CreatePlanComponent>,

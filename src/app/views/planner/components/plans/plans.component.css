@@ -10,6 +10,18 @@ mat-icon {
     margin-left: -10px;
 }
 
+.no-plan-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.no-plan-container h2 {
+    color: rgb(44, 44, 44);
+    font-weight: 500;
+}
+
 .example-container {
     width: 400px;
     max-width: 100%;

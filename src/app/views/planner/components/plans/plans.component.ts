@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
+import { Plan } from 'src/app/shared/data/plan';
+
+import { PlanService } from 'src/app/shared/services/plan.service';
+
 
 @Component({
   selector: 'app-plans',
@@ -9,10 +13,12 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 })
 export class PlansComponent implements OnInit {
 
-  private plansList: string[];
+  private user: any;
 
-  constructor() {
-    this.plansList = ['Plano 1', 'Plano 2', 'Plano 3', 'Plano 4', 'Plano 5'];
+  private plansList: Plan[];
+
+  constructor(private planService: PlanService) {
+    this.plansList = this.planService.getPlans();
   }
 
   ngOnInit() {
@@ -21,6 +27,7 @@ export class PlansComponent implements OnInit {
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    
     } else {
       transferArrayItem(event.previousContainer.data,
                         event.container.data,
@@ -28,5 +35,10 @@ export class PlansComponent implements OnInit {
                         event.currentIndex);
     }
     console.log(this.plansList);
+  }
+
+  updateStatusPlan(plan: Plan, status: string) {
+    this.user = this.planService.getUser();
+    plan.details.status = status;
   }
 }
