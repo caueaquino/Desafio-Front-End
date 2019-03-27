@@ -66,6 +66,22 @@ export class PlanService {
     }
   }
 
+  removePlan(plan: Plan) {
+    for (let i = 0; i<this.plans.length; i++) {
+      if (this.plans[i].id === plan.id) {
+        this.plans.splice(i, 1);
+        return true;
+      }
+      for(let j=0; i<this.plans[i].childPlans.length; j++){
+        if (this.plans[i].childPlans[j].id === plan.id) {
+          this.plans[i].childPlans.splice(j, 1);
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
   removePlanType(planType: string) {
     for (let i = 0; i < this.plansType.length; i++) {
       if (this.plansType[i] === planType) {

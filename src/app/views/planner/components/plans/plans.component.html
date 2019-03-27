@@ -75,7 +75,7 @@
               </button>
             </mat-menu>
 
-            <button mat-menu-item class="color-gray">
+            <button mat-menu-item class="color-gray" (click)="removePlan(plan)">
               <span class="action-span">
                 <mat-icon class="action-icon">delete</mat-icon>
                 Remover
@@ -151,7 +151,7 @@
                 </button>
               </mat-menu>
 
-              <button mat-menu-item class="color-gray">
+              <button mat-menu-item class="color-gray" (click)="removePlan(child)">
                 <span class="action-span">
                   <mat-icon class="action-icon">delete</mat-icon>
                   Remover

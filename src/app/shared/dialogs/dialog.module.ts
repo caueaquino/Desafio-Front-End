@@ -8,6 +8,8 @@ import { ErroConfirmCreatePlanDialogComponent } from './erro-confirm-create-plan
 import { SucessCreatePlanDialogComponent } from './sucess-create-plan-dialog/sucess-create-plan-dialog.component';
 import { ConfirmCreateTypePlanDialogComponent } from './confirm-create-type-plan-dialog/confirm-create-type-plan-dialog.component';
 import { SucessCreatePlanTypeDialogComponent } from './sucess-create-plan-type-dialog/sucess-create-plan-type-dialog.component';
+import { ConfirmRemoveDialogComponent } from './confirm-remove-dialog/confirm-remove-dialog.component';
+import { SucessRemoveDialogComponent } from './sucess-remove-dialog/sucess-remove-dialog.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { SucessCreatePlanTypeDialogComponent } from './sucess-create-plan-type-d
     ErroConfirmCreatePlanDialogComponent,
     SucessCreatePlanDialogComponent,
     ConfirmCreateTypePlanDialogComponent,
-    SucessCreatePlanTypeDialogComponent
+    SucessCreatePlanTypeDialogComponent,
+    ConfirmRemoveDialogComponent,
+    SucessRemoveDialogComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +30,9 @@ import { SucessCreatePlanTypeDialogComponent } from './sucess-create-plan-type-d
     ErroConfirmCreatePlanDialogComponent,
     SucessCreatePlanDialogComponent,
     ConfirmCreateTypePlanDialogComponent,
-    SucessCreatePlanTypeDialogComponent
+    SucessCreatePlanTypeDialogComponent,
+    ConfirmRemoveDialogComponent,
+    SucessRemoveDialogComponent
   ]
 })
 export class DialogModule { }

@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
+import { MatDialog } from '@angular/material';
+
 import { Plan } from 'src/app/shared/data/plan';
 
 import { PlanService } from 'src/app/shared/services/plan.service';
+
+import { ConfirmRemoveDialogComponent } from 'src/app/shared/dialogs/confirm-remove-dialog/confirm-remove-dialog.component';
+import { SucessRemoveDialogComponent } from 'src/app/shared/dialogs/sucess-remove-dialog/sucess-remove-dialog.component';
 
 
 @Component({
@@ -17,7 +22,9 @@ export class PlansComponent implements OnInit {
 
   private plansList: Plan[];
 
-  constructor(private planService: PlanService) {
+  constructor(private planService: PlanService,
+              private dialog: MatDialog){
+
     this.user = this.planService.getUser();
     this.plansList = this.planService.getPlans();
   }
@@ -42,5 +49,16 @@ export class PlansComponent implements OnInit {
     this.user = this.planService.getUser();
     plan.details.status = status;
     plan = this.planService.setShowDate(plan);
+  }
+
+  removePlan(plan: Plan) {
+    const removeDialog = this.dialog.open(ConfirmRemoveDialogComponent);
+
+    removeDialog.beforeClose().subscribe(() => {
+      if (removeDialog.componentInstance.res) {
+        this.planService.removePlan(plan);
+        this.dialog.open(SucessRemoveDialogComponent);
+      }
+    })
   }
 }
