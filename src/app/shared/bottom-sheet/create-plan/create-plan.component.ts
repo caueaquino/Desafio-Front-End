@@ -23,14 +23,14 @@ import { PlanType } from '../../data/planType';
 })
 export class CreatePlanComponent implements OnInit {
 
-  private people: string[];
+  private people: any[];
   private plansType: PlanType[];
   private plans: Plan[];
 
   private formPlan = this.formBuilder.group({
     planName: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
     planType: [null, Validators.required],
-    planResponsible: [null, [Validators.required, Validators.minLength(3)]],
+    planResponsible: [null, [Validators.required]],
     beginDate: [null, [Validators.nullValidator]],
     endDate: [null, [Validators.nullValidator]],
     showDate: ['Sem prazo definido', Validators.nullValidator],

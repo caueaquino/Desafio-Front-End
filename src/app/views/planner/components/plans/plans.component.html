@@ -1,5 +1,13 @@
 <!-- HTML Document -->
 
+<mat-chip-list aria-label="Fish selection">
+  <mat-chip selected>Todos</mat-chip>
+  <mat-chip selected>Meus planos</mat-chip>
+  <mat-chip selected>Iniciados</mat-chip>
+  <mat-chip selected>Concluídos</mat-chip>
+  <mat-chip selected>Suspensos</mat-chip>
+  <mat-chip selected>Cancelados</mat-chip>
+</mat-chip-list>
 
 <div cdkDropList [cdkDropListData]="plansList" class="example-list" (cdkDropListDropped)="drop($event)">
 
@@ -20,8 +28,8 @@
 
         <div class="action-plan">
           <div class="info-plan no-margin">
-            <span class="span-medium color-black text-right">{{user.name}}</span>
-            <span class="span-medium color-gray text-right">{{user.email}}</span>
+            <span class="span-medium color-black text-right">{{plan.planResponsible.name}}</span>
+            <span class="span-medium color-gray text-right">{{plan.planResponsible.email}}</span>
           </div>
 
           <img class="user-icon" src="../assets/images/user_icon.png" alt="icone-usuário">

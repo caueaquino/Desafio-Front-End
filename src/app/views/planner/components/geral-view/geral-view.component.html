@@ -1,2 +1,11 @@
 <!-- HTML Document -->
 
+
+<section>
+    <mat-card *ngFor="let item of items">
+        <button (click)="goItem(item.name)">
+            <span>{{item.name}}</span>
+            <span>{{item.qtd}}</span>
+        </button>
+    </mat-card>
+</section>

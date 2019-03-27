@@ -1,5 +1,49 @@
 /* CSS DOocument */
 
-* {
-    color: black;
+section {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+mat-card {
+    margin: 15px;
+    transition: all 0.2s;
+    background-image: linear-gradient(rgb(119, 119, 255), rgb(119, 156, 255), rgb(119, 203, 255));
+}
+
+mat-card:hover {
+    opacity: 0.8;
+}
+
+mat-card, button {
+    padding: 0!important;
+    width: 45%;
+    min-width: 250px;
+    min-height: 200px;
+}
+
+button {
+    width: 100%!important;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+button:focus {
+    outline-style: none;
+}
+
+span {
+    min-width: 250px;
+    color: white;
+    font-size: 24pt;
+    font-weight: 500;
+    margin: 5px;
 }

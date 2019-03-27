@@ -37,7 +37,7 @@ export class PlannerComponent implements OnInit {
           description: null,
           interested: null,
           cost: null,
-          status: null,
+          status: 'Aguardando início',
       },
       childPlans: null,
       id: this.planService.getIndexId(),

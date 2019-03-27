@@ -21,7 +21,14 @@ export class PlanService {
     email: 'usuário@qualiex.com'
   };
 
-  private people = ['Maria', 'João', 'Marcos', 'Julia', 'Roberto', 'Camila'];
+  private people = [
+    {name: 'Maria', email: 'Maria@email.com'},
+    {name: 'João', email: 'Joao@email.com'},
+    {name: 'Marcos', email: 'Marcos@email.com'},
+    {name: 'Julia', email: 'Julia@email.com'},
+    {name: 'Roberto', email: 'Roberto@email.com'},
+    {name: 'Camila', email: 'Camila@email.com'}
+  ];
 
   private plans: Plan[];
 

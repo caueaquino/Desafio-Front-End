@@ -39,8 +39,8 @@ span {
 }
 
 .example-form {
-    /* min-width: 150px;
-    max-width: 500px; */
+    min-width: 150px;
+    max-width: 500px;
     width: 90%;
 }
 

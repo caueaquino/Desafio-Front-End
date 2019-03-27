@@ -21,8 +21,6 @@ import { CreatePlanComponent } from 'src/app/shared/bottom-sheet/create-plan/cre
 })
 export class PlansComponent implements OnInit {
 
-  private user: any;
-
   private plansList: Plan[];
 
   constructor(private planService: PlanService,
@@ -30,7 +28,6 @@ export class PlansComponent implements OnInit {
               private bottomSheet: MatBottomSheet,
               private router: Router) {
 
-    this.user = this.planService.getUser();
     this.plansList = this.planService.getPlans();
   }
 
@@ -59,7 +56,6 @@ export class PlansComponent implements OnInit {
   }
 
   updateStatusPlan(plan: Plan, status: string) {
-    this.user = this.planService.getUser();
     plan.details.status = status;
     plan = this.planService.setShowDate(plan);
   }
