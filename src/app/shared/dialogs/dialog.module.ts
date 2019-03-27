@@ -10,6 +10,8 @@ import { ConfirmCreateTypePlanDialogComponent } from './confirm-create-type-plan
 import { SucessCreatePlanTypeDialogComponent } from './sucess-create-plan-type-dialog/sucess-create-plan-type-dialog.component';
 import { ConfirmRemoveDialogComponent } from './confirm-remove-dialog/confirm-remove-dialog.component';
 import { SucessRemoveDialogComponent } from './sucess-remove-dialog/sucess-remove-dialog.component';
+import { ConfirmEditDialogComponent } from './confirm-edit-dialog/confirm-edit-dialog.component';
+import { SucessEditDialogComponent } from './sucess-edit-dialog/sucess-edit-dialog.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { SucessRemoveDialogComponent } from './sucess-remove-dialog/sucess-remov
     ConfirmCreateTypePlanDialogComponent,
     SucessCreatePlanTypeDialogComponent,
     ConfirmRemoveDialogComponent,
-    SucessRemoveDialogComponent
+    SucessRemoveDialogComponent,
+    ConfirmEditDialogComponent,
+    SucessEditDialogComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +36,9 @@ import { SucessRemoveDialogComponent } from './sucess-remove-dialog/sucess-remov
     ConfirmCreateTypePlanDialogComponent,
     SucessCreatePlanTypeDialogComponent,
     ConfirmRemoveDialogComponent,
-    SucessRemoveDialogComponent
+    SucessRemoveDialogComponent,
+    ConfirmEditDialogComponent,
+    SucessEditDialogComponent
   ]
 })
 export class DialogModule { }

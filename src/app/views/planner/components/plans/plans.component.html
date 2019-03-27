@@ -31,7 +31,7 @@
           </button>
 
           <mat-menu #menu="matMenu">
-            <button mat-menu-item class="color-gray">
+            <button mat-menu-item class="color-gray" routerLink="EditarPlano" (click)="updatePlan(plan)">
               <span class="action-span">
                 <mat-icon class="action-icon">edit</mat-icon>
                 Editar
@@ -107,7 +107,7 @@
             </button>
 
             <mat-menu #menu="matMenu">
-              <button mat-menu-item class="color-gray">
+              <button mat-menu-item class="color-gray" routerLink="EditarPlano" (click)="updatePlan(child)">
                 <span class="action-span">
                   <mat-icon class="action-icon">edit</mat-icon>
                   Editar

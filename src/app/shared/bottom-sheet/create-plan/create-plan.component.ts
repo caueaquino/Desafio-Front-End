@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatBottomSheetRef, MatDialog } from '@angular/material';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { PlanService } from '../../services/plan.service';
 
@@ -8,7 +9,11 @@ import { ConfirmCreatePlanDialogComponent } from '../../dialogs/confirm-create-p
 // tslint:disable-next-line:max-line-length
 import { ErroConfirmCreatePlanDialogComponent } from '../../dialogs/erro-confirm-create-plan-dialog/erro-confirm-create-plan-dialog.component';
 import { SucessCreatePlanDialogComponent } from '../../dialogs/sucess-create-plan-dialog/sucess-create-plan-dialog.component';
+import { ConfirmEditDialogComponent } from '../../dialogs/confirm-edit-dialog/confirm-edit-dialog.component';
+import { SucessEditDialogComponent } from '../../dialogs/sucess-edit-dialog/sucess-edit-dialog.component';
+
 import { Plan } from '../../data/plan';
+import { PlanType } from '../../data/planType';
 
 
 @Component({
@@ -19,7 +24,7 @@ import { Plan } from '../../data/plan';
 export class CreatePlanComponent implements OnInit {
 
   private people: string[];
-  private plansType: string[];
+  private plansType: PlanType[];
   private plans: Plan[];
 
   private formPlan = this.formBuilder.group({
@@ -36,19 +41,30 @@ export class CreatePlanComponent implements OnInit {
       status: ['Aguardando início', Validators.nullValidator]
     }),
     childPlans: [null, [Validators.nullValidator]],
-    id: [this.planService.getIndexId(), [Validators.required]]
+    id: [null, [Validators.required]]
   });
 
   constructor(private bottomSheetRef: MatBottomSheetRef<CreatePlanComponent>,
               private formBuilder: FormBuilder,
               private dialog: MatDialog,
-              private planService: PlanService) {
+              private planService: PlanService,
+              private router: Router) {
   }
 
   ngOnInit() {
     this.people = this.planService.getPeople();
     this.plansType = this.planService.getPlansType();
     this.plans = this.planService.getPlans();
+    this.setForm();
+  }
+
+  confirmButton() {
+    if (this.router.isActive('Planos/EditarPlano', true)) {
+      this.confirmButtonEitPlan();
+
+    } else {
+      this.confirmButtonCreatePlan();
+    }
   }
 
   confirmButtonCreatePlan() {
@@ -75,5 +91,35 @@ export class CreatePlanComponent implements OnInit {
     } else {
       this.dialog.open(ErroConfirmCreatePlanDialogComponent);
     }
+  }
+
+  confirmButtonEitPlan() {
+    if (this.formPlan.valid) {
+      const dialogConfirm = this.dialog.open(ConfirmEditDialogComponent);
+
+      dialogConfirm.beforeClose().subscribe(() => {
+        if (dialogConfirm.componentInstance.res) {
+          this.planService.removePlan(this.formPlan.value);
+          this.formPlan.patchValue(this.planService.setShowDate(this.formPlan.value));
+
+          if (this.formPlan.value.childPlans === null) {
+            this.planService.createPlan(this.formPlan.value);
+
+          } else {
+            console.log(this.formPlan.value);
+            this.planService.createChildPlan(this.formPlan.value);
+          }
+
+          this.bottomSheetRef.dismiss();
+          this.dialog.open(SucessEditDialogComponent);
+        }
+      });
+    } else {
+      this.dialog.open(ErroConfirmCreatePlanDialogComponent);
+    }
+  }
+
+  setForm() {
+    this.formPlan.patchValue(this.planService.getAuxPlan());
   }
 }

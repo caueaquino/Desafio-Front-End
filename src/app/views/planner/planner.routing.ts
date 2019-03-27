@@ -15,7 +15,7 @@ const plannerRoutes = [{
           children: [
             { path: '', component: PlansComponent },
             { path: 'CriarPlano', component: PlansComponent },
-            { paht: 'EditarPlano', component: PlansComponent }
+            { path: 'EditarPlano', component: PlansComponent }
           ]
         },
         { path: 'TiposDePlano', component: PlansTypeComponent,

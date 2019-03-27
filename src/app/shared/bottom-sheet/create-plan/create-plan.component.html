@@ -5,7 +5,7 @@
     <mat-icon class="color-black font-icon">close</mat-icon>
   </button>
   <span class="color-black">Cadastrar plano</span>
-  <button mat-icon-button class="button-confirm" (click)="confirmButtonCreatePlan()">
+  <button mat-icon-button class="button-confirm" (click)="confirmButton()">
     <mat-icon class="color-black font-icon">check</mat-icon>
   </button>
 </mat-toolbar>
@@ -22,7 +22,7 @@
         <mat-label>Tipo do plano</mat-label>
         <mat-select formControlName="planType">
           <mat-option *ngFor="let type of plansType" [value]="type">
-            {{type}}
+            {{type.planTypeName}}
           </mat-option>
         </mat-select>
       </mat-form-field>

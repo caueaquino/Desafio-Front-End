@@ -4,8 +4,8 @@
   <button mat-icon-button class="cancel-button" (click)="bottomSheetRef.dismiss()">
     <mat-icon class="color-black font-icon">close</mat-icon>
   </button>
-  <span class="color-black">Cadastrar tipo</span>
-  <button mat-icon-button class="button-confirm" (click)="confirmButtonCreatePlanType()">
+  <span class="color-black" [innerText]="router.isActive('TiposDePlano/EditarPlano', false) ? 'Editar Tipo' : 'Cadastrar Tipo' "></span>
+  <button mat-icon-button class="button-confirm" (click)=" router.isActive('TiposDePlano/EditarPlano', true) ? confirmButtonEditPlanType() : confirmButtonCreatePlanType()">
     <mat-icon class="color-black font-icon">check</mat-icon>
   </button>
 </mat-toolbar>

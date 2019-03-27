@@ -10,7 +10,7 @@
     
     <mat-list-item>
     
-      <span class="span-type-plan">{{typePlan}}</span>
+      <span class="span-type-plan">{{typePlan.planTypeName}}</span>
 
       <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon class="color-gray icon-big">more_vert</mat-icon>
@@ -18,7 +18,7 @@
 
       <mat-menu #menu="matMenu">
 
-        <button mat-menu-item class="color-gray">
+        <button mat-menu-item class="color-gray" routerLink="EditarPlano" (click)="updatePlanType(typePlan)">
           <span>
             <mat-icon>edit</mat-icon>
             Editar

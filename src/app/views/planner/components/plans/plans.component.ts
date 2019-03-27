@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
-import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
+
+import { MatDialog, MatBottomSheet } from '@angular/material';
 
 import { Plan } from 'src/app/shared/data/plan';
 
@@ -9,6 +11,7 @@ import { PlanService } from 'src/app/shared/services/plan.service';
 
 import { ConfirmRemoveDialogComponent } from 'src/app/shared/dialogs/confirm-remove-dialog/confirm-remove-dialog.component';
 import { SucessRemoveDialogComponent } from 'src/app/shared/dialogs/sucess-remove-dialog/sucess-remove-dialog.component';
+import { CreatePlanComponent } from 'src/app/shared/bottom-sheet/create-plan/create-plan.component';
 
 
 @Component({
@@ -23,7 +26,9 @@ export class PlansComponent implements OnInit {
   private plansList: Plan[];
 
   constructor(private planService: PlanService,
-              private dialog: MatDialog){
+              private dialog: MatDialog,
+              private bottomSheet: MatBottomSheet,
+              private router: Router) {
 
     this.user = this.planService.getUser();
     this.plansList = this.planService.getPlans();
@@ -45,6 +50,14 @@ export class PlansComponent implements OnInit {
     console.log(this.plansList);
   }
 
+  updatePlan(plan: Plan) {
+    this.planService.setAuxPlan(plan);
+
+    const bs = this.bottomSheet.open(CreatePlanComponent);
+
+    bs.afterDismissed().subscribe(() => this.router.navigate(['/Planos']));
+  }
+
   updateStatusPlan(plan: Plan, status: string) {
     this.user = this.planService.getUser();
     plan.details.status = status;
@@ -59,6 +72,6 @@ export class PlansComponent implements OnInit {
         this.planService.removePlan(plan);
         this.dialog.open(SucessRemoveDialogComponent);
       }
-    })
+    });
   }
 }

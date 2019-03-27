@@ -1,6 +1,9 @@
-import { Plan } from './../data/plan';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { PlanType } from './../data/planType';
+import { Plan } from './../data/plan';
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +12,9 @@ export class PlanService {
 
   private indexId: any;
 
-  title: string;
+  private indexIdPlanType: any;
+
+  public title: string;
 
   private user = {
     name: 'Usuário Qualiex',
@@ -20,16 +25,23 @@ export class PlanService {
 
   private plans: Plan[];
 
-  private plansType: string[];
+  private auxPlan: Plan;
+
+  private plansType: PlanType[];
+
+  private auxPlanType: PlanType;
+
 
   constructor(private router: Router) {
     this.indexId = 0;
+
+    this.indexIdPlanType = 0;
 
     this.setInicialTitle();
 
     this.plans = [];
 
-    this.plansType = ['Tipo padrão'];
+    this.plansType = [{planTypeName : 'Tipo padrão', id: 0}];
   }
 
   getUser() {
@@ -41,6 +53,11 @@ export class PlanService {
     return this.indexId;
   }
 
+  getIndexIdPlanType() {
+    this.indexIdPlanType++;
+    return this.indexIdPlanType;
+  }
+
   getPeople() {
     return this.people;
   }
@@ -49,30 +66,46 @@ export class PlanService {
     return this.plans;
   }
 
+  getAuxPlan() {
+    return this.auxPlan;
+  }
+
   getPlansType() {
     return this.plansType;
   }
 
-  addPlanType(planType: string) {
+  getAuxPlanType() {
+    return this.auxPlanType;
+  }
+
+  setAuxPlan(plan: Plan) {
+    this.auxPlan = plan;
+  }
+
+  setAuxPlanType(planType: PlanType) {
+    this.auxPlanType = planType;
+  }
+
+  addPlanType(planType: PlanType) {
     this.plansType.push(planType);
     console.log(this.plansType);
   }
 
-  updatePlanType(planType: string, newType: string) {
+  updatePlanType(planType: PlanType) {
     for (let i = 0; i < this.plansType.length; i++) {
-      if (this.plansType[i] === planType) {
-        this.plansType[i] = newType;
+      if (this.plansType[i].id === planType.id) {
+        this.plansType[i] = planType;
       }
     }
   }
 
   removePlan(plan: Plan) {
-    for (let i = 0; i<this.plans.length; i++) {
+    for (let i = 0; i < this.plans.length; i++) {
       if (this.plans[i].id === plan.id) {
         this.plans.splice(i, 1);
         return true;
       }
-      for(let j=0; i<this.plans[i].childPlans.length; j++){
+      for (let j = 0; i < this.plans[i].childPlans.length; j++) {
         if (this.plans[i].childPlans[j].id === plan.id) {
           this.plans[i].childPlans.splice(j, 1);
           return true;
@@ -82,9 +115,9 @@ export class PlanService {
     return false;
   }
 
-  removePlanType(planType: string) {
+  removePlanType(planType: PlanType) {
     for (let i = 0; i < this.plansType.length; i++) {
-      if (this.plansType[i] === planType) {
+      if (this.plansType[i].id === planType.id) {
         this.plansType.splice(i, 1);
       }
     }
