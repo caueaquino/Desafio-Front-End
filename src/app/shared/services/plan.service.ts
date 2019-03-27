@@ -163,9 +163,6 @@ export class PlanService {
   }
 
   createChildPlan(plan) {
-    console.log(plan);
-    console.log(plan.childPlans);
-    console.log(plan.childPlans.id);
     for (const p of this.plans) {
       if (plan.childPlans.id === p.id) {
         plan.childPlans = null;
@@ -173,9 +170,10 @@ export class PlanService {
           p.childPlans = [];
         }
         p.childPlans.push(plan);
+        return true;
       }
     }
-    console.log(this.plans);
+    return false;
   }
 
   setShowDate(plan: Plan) {

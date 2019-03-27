@@ -2,7 +2,7 @@
 export interface Plan {
     planName: string;
     planType: string;
-    planResponsible: string;
+    planResponsible: any[];
     beginDate: Date;
     endDate: Date;
     showDate: string;

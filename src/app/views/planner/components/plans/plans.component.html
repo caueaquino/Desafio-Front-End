@@ -93,7 +93,7 @@
         </div>
       </mat-expansion-panel-header>
 
-      <div class="internal-plans" cdkDropList [cdkDropListData]="childPlans" (cdkDropListDropped)="drop($event)">
+      <div class="internal-plans" cdkDropList [cdkDropListData]="plan.childPlans" (cdkDropListDropped)="drop($event)">
         <div class="child-pane" *ngFor="let child of plan.childPlans" cdkDrag>
   
           <div class="info-plan">
@@ -104,8 +104,8 @@
 
           <div class="action-plan">
             <div class="info-plan no-margin">
-              <span class="span-medium color-black text-right">{{user.name}}</span>
-              <span class="span-medium color-gray text-right">{{user.email}}</span>
+              <span class="span-medium color-black text-right">{{child.planResponsible.name}}</span>
+              <span class="span-medium color-gray text-right">{{child.planResponsible.email}}</span>
             </div>
 
             <img class="user-icon" src="../assets/images/user_icon.png" alt="icone-usuário">

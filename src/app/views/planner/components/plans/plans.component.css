@@ -6,11 +6,13 @@
 
 mat-chip-list {
     margin-top: 50px;
+    z-index: 4;
 }
 
 mat-chip {
     background-color: rgb(75, 152, 253)!important;
     transition: all 0.2s;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.356);
 }
 
 mat-chip:hover {
