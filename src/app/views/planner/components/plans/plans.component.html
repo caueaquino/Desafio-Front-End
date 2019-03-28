@@ -1,12 +1,12 @@
 <!-- HTML Document -->
 
 <mat-chip-list aria-label="Fish selection">
-  <mat-chip selected>Todos</mat-chip>
-  <mat-chip selected>Meus planos</mat-chip>
-  <mat-chip selected>Iniciados</mat-chip>
-  <mat-chip selected>Concluídos</mat-chip>
-  <mat-chip selected>Suspensos</mat-chip>
-  <mat-chip selected>Cancelados</mat-chip>
+  <mat-chip (click)="setRouteFilter(1)" selected>Todos</mat-chip>
+  <mat-chip (click)="setRouteFilter(2)" selected>Meus planos</mat-chip>
+  <mat-chip (click)="setRouteFilter(3)" selected>Iniciados</mat-chip>
+  <mat-chip (click)="setRouteFilter(4)" selected>Concluídos</mat-chip>
+  <mat-chip (click)="setRouteFilter(5)" selected>Suspensos</mat-chip>
+  <mat-chip (click)="setRouteFilter(6)" selected>Cancelados</mat-chip>
 </mat-chip-list>
 
 <div cdkDropList [cdkDropListData]="plansList" class="example-list" (cdkDropListDropped)="drop($event)">

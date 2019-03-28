@@ -70,4 +70,38 @@ export class PlansComponent implements OnInit {
       }
     });
   }
+
+  setRouteFilter(routeOption: number) {
+    switch (routeOption) {
+      case 1: {
+        this.router.navigate(['/Planos', 'Todos']);
+        break;
+      }
+
+      case 2: {
+        this.router.navigate(['/Planos', 'MeusPlanos']);
+        break;
+      }
+
+      case 3: {
+        this.router.navigate(['/Planos', 'Iniciados']);
+        break;
+      }
+
+      case 4: {
+        this.router.navigate(['/Planos', 'Concluidos']);
+        break;
+      }
+
+      case 5: {
+        this.router.navigate(['/Planos', 'Suspensos']);
+        break;
+      }
+
+      case 6: {
+        this.router.navigate(['/Planos', 'Cancelados']);
+        break;
+      }
+    }
+  }
 }

@@ -31,32 +31,32 @@ export class GeralViewComponent implements OnInit {
   goItem(optItem: string) {
     switch (optItem) {
       case 'Todos': {
-        this.router.navigate(['']);
+        this.router.navigate(['/Planos', 'Todos']);
         break;
       }
 
       case 'Meus planos': {
-        this.router.navigate(['']);
+        this.router.navigate(['/Planos', 'MeusPlanos']);
         break;
       }
 
       case 'Iniciados': {
-        this.router.navigate(['']);
+        this.router.navigate(['/Planos', 'Iniciados']);
         break;
       }
 
       case 'Concluídos': {
-        this.router.navigate(['']);
+        this.router.navigate(['/Planos', 'Concluidos']);
         break;
       }
 
       case 'Suspensos': {
-        this.router.navigate(['']);
+        this.router.navigate(['/Planos', 'Suspensos']);
         break;
       }
 
       case 'Cancelados': {
-        this.router.navigate(['']);
+        this.router.navigate(['/Planos', 'Cancelados']);
         break;
       }
     }
