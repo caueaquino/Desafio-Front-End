@@ -18,12 +18,13 @@ export class PlanService {
 
   private user = {
     name: 'Usuário Qualiex',
-    email: 'usuário@qualiex.com'
+    email: 'Usuário@qualiex.com'
   };
 
   private people = [
+    {name: 'Usuário Qualiex', email: 'Usuário@qualiex.com'},
     {name: 'Maria', email: 'Maria@email.com'},
-    {name: 'João', email: 'Joao@email.com'},
+    {name: 'João', email: 'João@email.com'},
     {name: 'Marcos', email: 'Marcos@email.com'},
     {name: 'Julia', email: 'Julia@email.com'},
     {name: 'Roberto', email: 'Roberto@email.com'},
@@ -31,6 +32,8 @@ export class PlanService {
   ];
 
   private plans: Plan[];
+
+  private myPlans: Plan[];
 
   private auxPlan: Plan;
 
@@ -47,6 +50,8 @@ export class PlanService {
     this.setInicialTitle();
 
     this.plans = [];
+
+    this.myPlans = [];
 
     this.plansType = [{planTypeName : 'Tipo padrão', id: 0}];
   }
@@ -71,6 +76,52 @@ export class PlanService {
 
   getPlans() {
     return this.plans;
+  }
+
+  getAllPlans() {
+    const auxPlans = [];
+
+    if (this.router.isActive('Planos/Todos', true)) {
+      return this.plans;
+
+    } else if (this.router.isActive('Planos/MeusPlanos', true)) {
+      for (const plan of this.plans) {
+        if (plan.planResponsible.email === this.user.email) {
+          auxPlans.push(plan);
+        }
+      }
+      return auxPlans;
+
+    } else if (this.router.isActive('Planos/Iniciados', true)) {
+      for (const plan of this.plans) {
+        if (plan.details.status === 'Aberto') {
+          auxPlans.push(plan);
+        }
+      }
+      return auxPlans;
+
+    } else if (this.router.isActive('Planos/Concluidos', true)) {
+      for (const plan of this.plans) {
+        if (plan.details.status === 'Concluído') {
+          auxPlans.push(plan);
+        }
+      }
+      return auxPlans;
+
+    } else if (this.router.isActive('Planos/Suspensos', true)) {
+      for (const plan of this.plans) {
+        if (plan.details.status === 'Aguardando início') {
+          auxPlans.push(plan);
+        }
+      }
+    } else if (this.router.isActive('Planos/Cancelados', true)) {
+      for (const plan of this.plans) {
+        if (plan.details.status === 'Cancelado') {
+          auxPlans.push(plan);
+        }
+      }
+    }
+    return auxPlans;
   }
 
   getAuxPlan() {

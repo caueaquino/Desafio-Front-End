@@ -44,6 +44,8 @@ export class CreatePlanComponent implements OnInit {
     id: [null, [Validators.required]]
   });
 
+  private editOn = false;
+
   constructor(private bottomSheetRef: MatBottomSheetRef<CreatePlanComponent>,
               private formBuilder: FormBuilder,
               private dialog: MatDialog,
@@ -59,7 +61,7 @@ export class CreatePlanComponent implements OnInit {
   }
 
   confirmButton() {
-    if (this.router.isActive('Planos/EditarPlano', true)) {
+    if (!this.editOn) {
       this.confirmButtonEitPlan();
 
     } else {
@@ -83,8 +85,9 @@ export class CreatePlanComponent implements OnInit {
             this.planService.createChildPlan(this.formPlan.value);
           }
 
-          this.bottomSheetRef.dismiss();
-          this.dialog.open(SucessCreatePlanDialogComponent);
+          const dialog = this.dialog.open(SucessCreatePlanDialogComponent);
+
+          dialog.afterClosed().subscribe(() => this.bottomSheetRef.dismiss());
         }
       });
 
@@ -110,8 +113,9 @@ export class CreatePlanComponent implements OnInit {
             this.planService.createChildPlan(this.formPlan.value);
           }
 
-          this.bottomSheetRef.dismiss();
-          this.dialog.open(SucessEditDialogComponent);
+          const dialog = this.dialog.open(SucessEditDialogComponent);
+
+          dialog.afterClosed().subscribe(() => this.bottomSheetRef.dismiss());
         }
       });
     } else {
@@ -121,5 +125,8 @@ export class CreatePlanComponent implements OnInit {
 
   setForm() {
     this.formPlan.patchValue(this.planService.getAuxPlan());
+    if (this.formPlan.value.planName === null) {
+      this.editOn = true;
+    }
   }
 }

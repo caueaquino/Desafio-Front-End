@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
-import { MatDialog, MatBottomSheet } from '@angular/material';
+import { MatDialog, MatBottomSheet, MatBottomSheetRef } from '@angular/material';
 
 import { Plan } from 'src/app/shared/data/plan';
 
@@ -12,6 +12,7 @@ import { PlanService } from 'src/app/shared/services/plan.service';
 import { ConfirmRemoveDialogComponent } from 'src/app/shared/dialogs/confirm-remove-dialog/confirm-remove-dialog.component';
 import { SucessRemoveDialogComponent } from 'src/app/shared/dialogs/sucess-remove-dialog/sucess-remove-dialog.component';
 import { CreatePlanComponent } from 'src/app/shared/bottom-sheet/create-plan/create-plan.component';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -26,15 +27,21 @@ export class PlansComponent implements OnInit {
   constructor(private planService: PlanService,
               private dialog: MatDialog,
               private bottomSheet: MatBottomSheet,
-              private router: Router) {
+              private router: Router,
+              private activeRoute: ActivatedRoute,
+              private location: Location) {
 
-    this.plansList = this.planService.getPlans();
+    this.router.onSameUrlNavigation = 'reload';
+    this.plansList = [];
   }
 
   ngOnInit() {
+    this.setPlansList();
+
+    this.activeRoute.params.subscribe(() => this.setPlansList());
   }
 
-  drop(event: CdkDragDrop<any[]>) {
+  drop(event: CdkDragDrop<Plan[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
 
@@ -52,12 +59,16 @@ export class PlansComponent implements OnInit {
 
     const bs = this.bottomSheet.open(CreatePlanComponent);
 
-    bs.afterDismissed().subscribe(() => this.router.navigate(['/Planos']));
+    bs.afterDismissed().subscribe(() => {
+      this.setPlansList();
+      this.location.back();
+      });
   }
 
   updateStatusPlan(plan: Plan, status: string) {
     plan.details.status = status;
     plan = this.planService.setShowDate(plan);
+    this.setPlansList();
   }
 
   removePlan(plan: Plan) {
@@ -71,37 +82,7 @@ export class PlansComponent implements OnInit {
     });
   }
 
-  setRouteFilter(routeOption: number) {
-    switch (routeOption) {
-      case 1: {
-        this.router.navigate(['/Planos', 'Todos']);
-        break;
-      }
-
-      case 2: {
-        this.router.navigate(['/Planos', 'MeusPlanos']);
-        break;
-      }
-
-      case 3: {
-        this.router.navigate(['/Planos', 'Iniciados']);
-        break;
-      }
-
-      case 4: {
-        this.router.navigate(['/Planos', 'Concluidos']);
-        break;
-      }
-
-      case 5: {
-        this.router.navigate(['/Planos', 'Suspensos']);
-        break;
-      }
-
-      case 6: {
-        this.router.navigate(['/Planos', 'Cancelados']);
-        break;
-      }
-    }
+  setPlansList() {
+    this.plansList = this.planService.getAllPlans();
   }
 }

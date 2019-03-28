@@ -5,13 +5,12 @@ import { RouterModule } from '@angular/router';
 import { PlannerComponent } from './planner.component';
 import { GeralViewComponent } from './components/geral-view/geral-view.component';
 import { PlansComponent } from './components/plans/plans.component';
-
 const plannerRoutes = [{
     path: '', component: PlannerComponent,
     children: [
         { path : '', redirectTo: 'VisaoGeral'},
         { path: 'VisaoGeral', component: GeralViewComponent },
-        { path: 'Planos', redirectTo: 'Planos/Todos'},
+        { path: 'Planos', redirectTo: 'Planos/Todos' },
         { path: 'Planos/:filter', component: PlansComponent,
           children: [
             { path: '', component: PlansComponent },

@@ -4,7 +4,7 @@
   <button mat-icon-button class="cancel-button" (click)="bottomSheetRef.dismiss()">
     <mat-icon class="color-black font-icon">close</mat-icon>
   </button>
-  <span class="color-black">Cadastrar plano</span>
+  <span class="color-black" [innerText]=" !this.editOn ? 'Editar Plano' : 'Cadastrar Plano' "></span>
   <button mat-icon-button class="button-confirm" (click)="confirmButton()">
     <mat-icon class="color-black font-icon">check</mat-icon>
   </button>

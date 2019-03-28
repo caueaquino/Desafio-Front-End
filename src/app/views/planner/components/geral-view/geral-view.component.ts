@@ -29,6 +29,8 @@ export class GeralViewComponent implements OnInit {
   }
 
   goItem(optItem: string) {
+    this.planService.setTitle(2);
+
     switch (optItem) {
       case 'Todos': {
         this.router.navigate(['/Planos', 'Todos']);
@@ -66,9 +68,12 @@ export class GeralViewComponent implements OnInit {
     const plans = this.planService.getPlans();
 
     this.items[0].qtd = plans.length;
-    this.items[1].qtd = plans.length;
 
     for (const plan of plans) {
+      if (plan.planResponsible.email === this.planService.getUser().email) {
+        this.items[1].qtd++;
+      }
+
       if (plan.details.status === 'Aberto') {
         this.items[2].qtd++;
 

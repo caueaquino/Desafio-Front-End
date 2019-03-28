@@ -10,13 +10,17 @@ mat-chip-list {
 }
 
 mat-chip {
-    background-color: rgb(75, 152, 253)!important;
+    background-color: rgb(100, 165, 250)!important;
     transition: all 0.2s;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.356);
 }
 
 mat-chip:hover {
     -webkit-transform: scale(1.1);
+}
+
+mat-chip:focus {
+    color: white!important;
 }
 
 mat-icon {
@@ -73,7 +77,7 @@ mat-expansion-panel:hover {
     vertical-align: top;
 }
   
-.example-list {
+.example-list, .div-group-cdk {
     width: 100%!important;
     min-height: 60px;
     background: white;
@@ -204,4 +208,10 @@ mat-expansion-panel:hover {
 
 .margin-b {
     margin-bottom: 25px;
+}
+
+.chip-active {
+    -webkit-transform: scale(1.1);
+    background-color: rgb(34, 130, 255)!important;
+    color: white!important;
 }

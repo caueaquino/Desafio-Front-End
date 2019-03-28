@@ -12,7 +12,7 @@ section {
 mat-card {
     margin: 15px;
     transition: all 0.2s;
-    background-image: linear-gradient(rgb(119, 119, 255), rgb(119, 156, 255), rgb(119, 203, 255));
+    background-image: linear-gradient(rgb(119, 140, 255), rgb(119, 160, 255), rgb(119, 180, 255));
 }
 
 mat-card:hover {

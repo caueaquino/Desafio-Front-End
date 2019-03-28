@@ -1,7 +1,7 @@
 import { PlanType } from './../../shared/data/planType';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { MatBottomSheet } from '@angular/material';
 
@@ -9,6 +9,7 @@ import { CreatePlanComponent } from 'src/app/shared/bottom-sheet/create-plan/cre
 import { CreateTypePlanComponent } from 'src/app/shared/bottom-sheet/create-type-plan/create-type-plan.component';
 
 import { PlanService } from 'src/app/shared/services/plan.service';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -20,7 +21,9 @@ export class PlannerComponent implements OnInit {
 
   constructor(private router: Router,
               private bottomSheet: MatBottomSheet,
-              private planService: PlanService) { }
+              private planService: PlanService,
+              private location: Location,
+              private activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
   }
@@ -47,7 +50,9 @@ export class PlannerComponent implements OnInit {
 
     const bs = this.bottomSheet.open(CreatePlanComponent);
 
-    bs.afterDismissed().subscribe(() => this.router.navigate(['/Planos']));
+    this.activeRoute.params.subscribe(params =>  console.log(params));
+
+    bs.afterDismissed().subscribe(() => this.location.back());
   }
 
   goTop() {
