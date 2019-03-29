@@ -74,7 +74,7 @@ export class PlansComponent implements OnInit {
 
   removePlan(plan: Plan) {
     let aux;
-    this.activeRoute.params.subscribe(res => {aux = res});
+    this.activeRoute.params.subscribe(res => { aux = res; });
     this.router.navigate(['/Planos', 'Carregando']).then(() => this.router.navigate(['Planos', aux]));
     const removeDialog = this.dialog.open(ConfirmRemoveDialogComponent);
 

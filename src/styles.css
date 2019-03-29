@@ -58,6 +58,29 @@ mat-tab-header {
     border-bottom: 0!important;
 }
 
+@media screen and (max-width:500px) {
+    .logo-qualiex {
+        margin-right: 10px!important;
+    }
+
+    .none-subtext {
+        display: none!important;
+    }
+
+    .menu-button {
+        margin: 0!important;
+    }
+
+    .select-application-button {
+        margin: 0!important;
+        padding: 0!important;
+    }
+
+    .main-title {
+        padding: 0!important;
+    }
+}
+
 @media screen and (max-width:650px) {
     .hide-user {
         display: none!important;
@@ -70,6 +93,12 @@ mat-tab-header {
     .user-icon {
         border-left: 1px solid rgba(0, 0, 0, 0.171);
         border-right: 1px solid rgba(0, 0, 0, 0.171);
+        margin: 0!important;
+        padding: 0!important;
+    }
+
+    mat-toolbar {
+        padding: 0!important;
     }
 }
 

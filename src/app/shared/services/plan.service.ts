@@ -81,41 +81,41 @@ export class PlanService {
   getAllPlans() {
 
     if (this.router.isActive('Planos/MeusPlanos', true)) {
-      return this.plans.filter(plan =>{
+      return this.plans.filter(plan => {
          if (plan.planResponsible.email === this.user.email) {
-           return plan; 
+           return plan;
          }
-      });      
+      });
 
     } else if (this.router.isActive('Planos/Iniciados', true)) {
-      return this.plans.filter(plan =>{
+      return this.plans.filter(plan => {
         if (plan.details.status === 'Aberto') {
-          return plan; 
+          return plan;
         }
-      });      
+      });
 
 
     } else if (this.router.isActive('Planos/Concluidos', true)) {
-      return this.plans.filter(plan =>{
+      return this.plans.filter(plan => {
         if (plan.details.status === 'Concluído') {
-          return plan; 
+          return plan;
         }
-      });      
+      });
 
 
     } else if (this.router.isActive('Planos/Suspensos', true)) {
-      return this.plans.filter(plan =>{
+      return this.plans.filter(plan => {
         if (plan.details.status === 'Aguardando início') {
-          return plan; 
+          return plan;
         }
-      });      
+      });
 
     } else if (this.router.isActive('Planos/Cancelados', true)) {
-      return this.plans.filter(plan =>{
+      return this.plans.filter(plan => {
         if (plan.details.status === 'Cancelado') {
-          return plan; 
+          return plan;
         }
-      });      
+      });
     }
     return this.plans;
   }
