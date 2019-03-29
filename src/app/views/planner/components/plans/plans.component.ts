@@ -13,6 +13,7 @@ import { ConfirmRemoveDialogComponent } from 'src/app/shared/dialogs/confirm-rem
 import { SucessRemoveDialogComponent } from 'src/app/shared/dialogs/sucess-remove-dialog/sucess-remove-dialog.component';
 import { CreatePlanComponent } from 'src/app/shared/bottom-sheet/create-plan/create-plan.component';
 import { Location } from '@angular/common';
+import { pipe } from 'rxjs';
 
 
 @Component({
@@ -24,6 +25,8 @@ export class PlansComponent implements OnInit {
 
   private plansList: Plan[];
 
+  private filterList: Plan[];
+
   constructor(private planService: PlanService,
               private dialog: MatDialog,
               private bottomSheet: MatBottomSheet,
@@ -31,14 +34,13 @@ export class PlansComponent implements OnInit {
               private activeRoute: ActivatedRoute,
               private location: Location) {
 
-    this.router.onSameUrlNavigation = 'reload';
     this.plansList = [];
   }
 
   ngOnInit() {
     this.setPlansList();
 
-    this.activeRoute.params.subscribe(() => this.setPlansList());
+    this.activeRoute.url.subscribe(() => this.setPlansList());
   }
 
   drop(event: CdkDragDrop<Plan[]>) {
@@ -61,8 +63,7 @@ export class PlansComponent implements OnInit {
 
     bs.afterDismissed().subscribe(() => {
       this.setPlansList();
-      this.location.back();
-      });
+    });
   }
 
   updateStatusPlan(plan: Plan, status: string) {
@@ -72,6 +73,9 @@ export class PlansComponent implements OnInit {
   }
 
   removePlan(plan: Plan) {
+    let aux;
+    this.activeRoute.params.subscribe(res => {aux = res});
+    this.router.navigate(['/Planos', 'Carregando']).then(() => this.router.navigate(['Planos', aux]));
     const removeDialog = this.dialog.open(ConfirmRemoveDialogComponent);
 
     removeDialog.beforeClose().subscribe(() => {

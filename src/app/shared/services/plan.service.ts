@@ -79,49 +79,45 @@ export class PlanService {
   }
 
   getAllPlans() {
-    const auxPlans = [];
 
-    if (this.router.isActive('Planos/Todos', true)) {
-      return this.plans;
-
-    } else if (this.router.isActive('Planos/MeusPlanos', true)) {
-      for (const plan of this.plans) {
-        if (plan.planResponsible.email === this.user.email) {
-          auxPlans.push(plan);
-        }
-      }
-      return auxPlans;
+    if (this.router.isActive('Planos/MeusPlanos', true)) {
+      return this.plans.filter(plan =>{
+         if (plan.planResponsible.email === this.user.email) {
+           return plan; 
+         }
+      });      
 
     } else if (this.router.isActive('Planos/Iniciados', true)) {
-      for (const plan of this.plans) {
+      return this.plans.filter(plan =>{
         if (plan.details.status === 'Aberto') {
-          auxPlans.push(plan);
+          return plan; 
         }
-      }
-      return auxPlans;
+      });      
+
 
     } else if (this.router.isActive('Planos/Concluidos', true)) {
-      for (const plan of this.plans) {
+      return this.plans.filter(plan =>{
         if (plan.details.status === 'Concluído') {
-          auxPlans.push(plan);
+          return plan; 
         }
-      }
-      return auxPlans;
+      });      
+
 
     } else if (this.router.isActive('Planos/Suspensos', true)) {
-      for (const plan of this.plans) {
+      return this.plans.filter(plan =>{
         if (plan.details.status === 'Aguardando início') {
-          auxPlans.push(plan);
+          return plan; 
         }
-      }
+      });      
+
     } else if (this.router.isActive('Planos/Cancelados', true)) {
-      for (const plan of this.plans) {
+      return this.plans.filter(plan =>{
         if (plan.details.status === 'Cancelado') {
-          auxPlans.push(plan);
+          return plan; 
         }
-      }
+      });      
     }
-    return auxPlans;
+    return this.plans;
   }
 
   getAuxPlan() {
