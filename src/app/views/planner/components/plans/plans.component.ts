@@ -63,6 +63,7 @@ export class PlansComponent implements OnInit {
 
     bs.afterDismissed().subscribe(() => {
       this.setPlansList();
+      this.location.back();
     });
   }
 

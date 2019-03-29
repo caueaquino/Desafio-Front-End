@@ -41,7 +41,8 @@ export class CreatePlanComponent implements OnInit {
       status: ['Aguardando início', Validators.nullValidator]
     }),
     childPlans: [null, [Validators.nullValidator]],
-    id: [null, [Validators.required]]
+    id: [null, [Validators.required]],
+    parent: [null, [Validators.nullValidator]]
   });
 
   private editOn = false;
@@ -128,5 +129,6 @@ export class CreatePlanComponent implements OnInit {
     if (this.formPlan.value.planName === null) {
       this.editOn = true;
     }
+    console.log(this.formPlan.value);
   }
 }

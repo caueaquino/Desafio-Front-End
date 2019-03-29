@@ -1,4 +1,5 @@
 import { Component, EventEmitter } from '@angular/core';
+import { PlanService } from './shared/services/plan.service';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +9,11 @@ import { Component, EventEmitter } from '@angular/core';
 export class AppComponent {
   title = 'Planner-v3';
 
-  optionButton = new EventEmitter();
-
-  constructor() {
+  constructor(private planService: PlanService) {
   }
 
-  menuButton() {
-    this.optionButton.emit();
+  setEventSideBar() {
+    this.planService.menuEvent.emit();
   }
+
 }

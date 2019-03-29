@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { PlanType } from './../data/planType';
@@ -41,6 +41,7 @@ export class PlanService {
 
   private auxPlanType: PlanType;
 
+  public menuEvent = new EventEmitter();
 
   constructor(private router: Router) {
     this.indexId = 0;
@@ -211,12 +212,12 @@ export class PlanService {
 
   createChildPlan(plan) {
     for (const p of this.plans) {
-      if (plan.childPlans.id === p.id) {
-        plan.childPlans = null;
+      if (plan.parent.id === p.id) {
         if (p.childPlans === null) {
           p.childPlans = [];
         }
         p.childPlans.push(plan);
+        console.log('foi');
         return true;
       }
     }
@@ -226,6 +227,9 @@ export class PlanService {
   setShowDate(plan: Plan) {
     if (plan.beginDate === null && plan.endDate === null) {
       plan.showDate = 'Sem prazo definido';
+
+    } else if (plan.beginDate === null) {
+      plan.showDate = `Finalizar até ${plan.endDate.getDate()}/${plan.endDate.getMonth() + 1}/${plan.endDate.getFullYear()}`;
 
     } else if (plan.endDate === null) {
       plan.showDate = `Iniciar até ${plan.beginDate.getDate()}/${plan.beginDate.getMonth() + 1}/${plan.beginDate.getFullYear()}`;

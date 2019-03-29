@@ -28,12 +28,6 @@
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <!-- <input matInput placeholder="Responsável (quem?)" formControlName="planResponsible" [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let person of people" [value]="person">
-            {{person}}
-          </mat-option>
-        </mat-autocomplete> -->
         <mat-label>Responsável (quem?)</mat-label>
         <mat-select formControlName="planResponsible">
           <mat-option *ngFor="let person of people" [value]="person">
@@ -58,7 +52,7 @@
 
       <mat-form-field class="example-full-width">
         <mat-label>Pertence ao plano</mat-label>
-        <mat-select formControlName="childPlans">
+        <mat-select formControlName="parent">
           <mat-option [value]=null>Nenhum</mat-option>
           <mat-option *ngFor="let plan of plans" [value]="plan">
             {{plan.planName}}
@@ -80,7 +74,7 @@
         <mat-label>Pessoas interessadas</mat-label>
         <mat-select formControlName="interested" multiple>
           <mat-option *ngFor="let person of people" [value]="person">
-            {{person}}
+            {{person.name}}
           </mat-option>
         </mat-select>
       </mat-form-field>

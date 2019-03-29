@@ -1,15 +1,16 @@
 import { PlanType } from './../../shared/data/planType';
 import { Observable } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, HostListener } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { MatBottomSheet } from '@angular/material';
+import { MatBottomSheet, MatDrawer } from '@angular/material';
 
 import { CreatePlanComponent } from 'src/app/shared/bottom-sheet/create-plan/create-plan.component';
 import { CreateTypePlanComponent } from 'src/app/shared/bottom-sheet/create-type-plan/create-type-plan.component';
 
 import { PlanService } from 'src/app/shared/services/plan.service';
 import { Location } from '@angular/common';
+import { componentHostSyntheticProperty } from '@angular/core/src/render3';
 
 
 @Component({
@@ -19,13 +20,38 @@ import { Location } from '@angular/common';
 })
 export class PlannerComponent implements OnInit {
 
+  private showButtonGoTop = false;
+
+  private showSide = false;
+
   constructor(private router: Router,
               private bottomSheet: MatBottomSheet,
               private planService: PlanService,
               private location: Location,
-              private activeRoute: ActivatedRoute) { }
+              private activeRoute: ActivatedRoute,
+              private elementRef: ElementRef) { }
 
   ngOnInit() {
+    this.planService.menuEvent.subscribe(() => console.log('event 2'));
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    if (document.documentElement.scrollTop === 0) {
+      setTimeout(() => {
+        this.showButtonGoTop = false;
+      },
+      100);
+
+    } else {
+      this.showButtonGoTop = true;
+    }
+  }
+
+  showSideMenu() {
+    console.log(this.elementRef);
+    console.log(this.elementRef.nativeElement);
+    this.elementRef.nativeElement.childNodes[0].childNodes[2].opened = true;
   }
 
   openCreatePlanBottomSheet() {
@@ -44,6 +70,7 @@ export class PlannerComponent implements OnInit {
       },
       childPlans: null,
       id: this.planService.getIndexId(),
+      parent: null
     };
 
     this.planService.setAuxPlan(plan);
@@ -58,6 +85,10 @@ export class PlannerComponent implements OnInit {
   goTop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
+    setTimeout(() => {
+      this.showButtonGoTop = false;
+    },
+    100);
   }
 
   openCreateTypePlanBottomSheet() {

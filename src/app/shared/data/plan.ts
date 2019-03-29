@@ -14,4 +14,5 @@ export interface Plan {
     };
     childPlans: Plan[];
     id: any;
+    parent: Plan;
 }

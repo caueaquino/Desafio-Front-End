@@ -1,15 +1,15 @@
 <!-- HTML Document -->
 
 <mat-drawer-container [hasBackdrop]="false">
-  <mat-drawer #drawer [mode]="over">
+  <mat-drawer #drawer [mode]="over" [(opened)]="showSide">
     <button mat-button class="nav-button" (click)="planService.setTitle(1)" routerLinkActive="mat-active" routerLink="/VisaoGeral">Visão Geral</button>
     <button mat-button class="nav-button" (click)="planService.setTitle(2)" routerLinkActive="mat-active" routerLink="/Planos">Planos</button>
     <button mat-button class="nav-button" (click)="planService.setTitle(3)" routerLinkActive="mat-active" routerLink="/TiposDePlano">Tipos de Plano</button>
   </mat-drawer>
 
-  <!-- <button mat-icon-button class="menu-button" (click)="drawer.toggle()">
+  <button mat-icon-button class="menu-button" (click)="showSideMenu()">
     <mat-icon class="color-white">menu</mat-icon>
-  </button> -->
+  </button>
 
   <div class="planner-content">
     <mat-card class="title-card">
@@ -41,4 +41,4 @@
 
 </mat-drawer-container>
 
-<button *ngIf="true" mat-icon-button class="top-button" (click)="goTop()"><mat-icon class="icons-button">arrow_drop_up</mat-icon></button>
+<button *ngIf="showButtonGoTop" mat-icon-button class="top-button" (click)="goTop()"><mat-icon class="icons-button">arrow_drop_up</mat-icon></button>
