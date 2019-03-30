@@ -8,6 +8,7 @@ import { AppRouting } from './app.routing';
 
 import { AngularMaterialModule } from './shared/modules/angular-material.module';
 import { PlanService } from './shared/services/plan.service';
+import { ServicesModule } from './shared/services/services.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PlanService } from './shared/services/plan.service';
     BrowserModule,
     BrowserAnimationsModule,
     AppRouting,
-    AngularMaterialModule
+    AngularMaterialModule,
+    ServicesModule
   ],
   providers: [PlanService],
   bootstrap: [AppComponent]

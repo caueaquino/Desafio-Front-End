@@ -207,7 +207,6 @@ export class PlanService {
 
   createPlan(plan: Plan) {
     this.plans.push(plan);
-    console.log(this.plans);
   }
 
   createChildPlan(plan) {
@@ -217,11 +216,23 @@ export class PlanService {
           p.childPlans = [];
         }
         p.childPlans.push(plan);
-        console.log('foi');
         return true;
       }
     }
     return false;
+  }
+
+  updatePlan(plan: Plan) {
+    for (let i = 0; i < this.plans.length; i++) {
+      if (this.plans[i].id === plan.id) {
+        this.plans[i] = plan;
+        for (const childPlan of this.plans[i].childPlans) {
+          childPlan.parent = plan;
+        }
+      } else {
+
+      }
+    }
   }
 
   setShowDate(plan: Plan) {

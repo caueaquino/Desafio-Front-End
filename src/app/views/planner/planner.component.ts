@@ -51,7 +51,7 @@ export class PlannerComponent implements OnInit {
   showSideMenu() {
     console.log(this.elementRef);
     console.log(this.elementRef.nativeElement);
-    this.elementRef.nativeElement.childNodes[0].childNodes[2].opened = true;
+    this.showSide = !this.showSide;
   }
 
   openCreatePlanBottomSheet() {

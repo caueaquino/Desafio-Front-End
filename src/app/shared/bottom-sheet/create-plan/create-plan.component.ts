@@ -78,7 +78,7 @@ export class CreatePlanComponent implements OnInit {
         if (dialogConfirm.componentInstance.res) {
           this.formPlan.patchValue(this.planService.setShowDate(this.formPlan.value));
 
-          if (this.formPlan.value.childPlans === null) {
+          if (this.formPlan.value.parent === null) {
             this.planService.createPlan(this.formPlan.value);
 
           } else {
@@ -103,16 +103,8 @@ export class CreatePlanComponent implements OnInit {
 
       dialogConfirm.beforeClose().subscribe(() => {
         if (dialogConfirm.componentInstance.res) {
-          this.planService.removePlan(this.formPlan.value);
-          this.formPlan.patchValue(this.planService.setShowDate(this.formPlan.value));
 
-          if (this.formPlan.value.childPlans === null) {
-            this.planService.createPlan(this.formPlan.value);
-
-          } else {
-            console.log(this.formPlan.value);
-            this.planService.createChildPlan(this.formPlan.value);
-          }
+          this.planService.updatePlan(this.formPlan.value);
 
           const dialog = this.dialog.open(SucessEditDialogComponent);
 
