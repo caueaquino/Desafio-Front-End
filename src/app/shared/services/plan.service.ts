@@ -55,6 +55,13 @@ export class PlanService {
     this.myPlans = [];
 
     this.plansType = [{planTypeName : 'Tipo padrão', id: 0}];
+
+    this.menuEvent.subscribe(() => {
+      console.log('MenuButton-AppComponent');
+    });
+  }
+
+  eventMenu() {
   }
 
   getUser() {

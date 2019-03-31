@@ -22,7 +22,7 @@ export class PlannerComponent implements OnInit {
 
   private showButtonGoTop = false;
 
-  private showSide = false;
+  private menuButtonShow = true;
 
   constructor(private router: Router,
               private bottomSheet: MatBottomSheet,
@@ -33,6 +33,10 @@ export class PlannerComponent implements OnInit {
 
   ngOnInit() {
     this.planService.menuEvent.subscribe(() => console.log('event 2'));
+
+    this.planService.menuEvent.subscribe(() => {
+      console.log('aaaaa');
+    });
   }
 
   @HostListener('window:scroll', [])
@@ -40,18 +44,19 @@ export class PlannerComponent implements OnInit {
     if (document.documentElement.scrollTop === 0) {
       setTimeout(() => {
         this.showButtonGoTop = false;
+        this.menuButtonShow = true;
       },
       100);
 
     } else {
       this.showButtonGoTop = true;
+      this.menuButtonShow = false;
     }
   }
 
-  showSideMenu() {
-    console.log(this.elementRef);
-    console.log(this.elementRef.nativeElement);
-    this.showSide = !this.showSide;
+  showSideMenu(drawer) {
+    drawer.toggle();
+    console.log(drawer);
   }
 
   openCreatePlanBottomSheet() {
