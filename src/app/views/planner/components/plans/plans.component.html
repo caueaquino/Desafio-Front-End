@@ -9,7 +9,7 @@
   <mat-chip routerLink="/Planos/Cancelados" routerLinkActive="chip-active" selected>Cancelados</mat-chip>
 </mat-chip-list>
 <div cdkDropListGroup class="div-group-cdk">
-  <div cdkDropList [cdkDropListData]="plansList" class="example-list" (cdkDropListDropped)="drop($event)">
+  <div cdkDropList id="root" [cdkDropListData]="plansList" class="example-list" (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]='this.planService.listCDK'>
 
     <div *ngIf="!plansList.length>0" class="no-plan-container">
       <h2>Nenhum plano encontrado !</h2>
@@ -93,7 +93,7 @@
           </div>
         </mat-expansion-panel-header>
 
-        <div class="internal-plans" cdkDropList [cdkDropListData]="plan.childPlans" (cdkDropListDropped)="drop($event)">
+        <div class="internal-plans" id="plan.id" cdkDropList [cdkDropListData]="plan.childPlans" (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]='this.planService.listCDK'>
           <div class="child-pane" cdkDrag [cdkDragData]="child" *ngFor="let child of plan.childPlans">
 
             <div class="info-plan">

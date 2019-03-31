@@ -54,6 +54,7 @@ export class PlansComponent implements OnInit {
                         event.currentIndex);
     }
     console.log(this.plansList);
+    this.planService.setPlans(this.plansList);
   }
 
   updatePlan(plan: Plan) {

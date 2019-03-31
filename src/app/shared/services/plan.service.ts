@@ -31,6 +31,8 @@ export class PlanService {
     {name: 'Camila', email: 'Camila@email.com'}
   ];
 
+  public listCDK: string[];
+
   private plans: Plan[];
 
   private myPlans: Plan[];
@@ -52,6 +54,8 @@ export class PlanService {
 
     this.plans = [];
 
+    this.setListCDK();
+
     this.myPlans = [];
 
     this.plansType = [{planTypeName : 'Tipo padrão', id: 0}];
@@ -62,6 +66,15 @@ export class PlanService {
   }
 
   eventMenu() {
+  }
+
+  setListCDK() {
+    this.listCDK = ['root'];
+
+    for (const plan of this.plans) {
+      this.listCDK.push(String(plan.id));
+    }
+    console.log(this.listCDK);
   }
 
   getUser() {
@@ -84,6 +97,10 @@ export class PlanService {
 
   getPlans() {
     return this.plans;
+  }
+
+  setPlans(plans) {
+    this.plans = plans;
   }
 
   getAllPlans() {
@@ -165,15 +182,18 @@ export class PlanService {
     for (let i = 0; i < this.plans.length; i++) {
       if (this.plans[i].id === plan.id) {
         this.plans.splice(i, 1);
+        this.setListCDK();
         return true;
       }
       for (let j = 0; i < this.plans[i].childPlans.length; j++) {
         if (this.plans[i].childPlans[j].id === plan.id) {
           this.plans[i].childPlans.splice(j, 1);
+          this.setListCDK();
           return true;
         }
       }
     }
+    this.setListCDK();
     return false;
   }
 
@@ -223,9 +243,11 @@ export class PlanService {
           p.childPlans = [];
         }
         p.childPlans.push(plan);
+        this.setListCDK();
         return true;
       }
     }
+    this.setListCDK();
     return false;
   }
 
@@ -233,13 +255,27 @@ export class PlanService {
     for (let i = 0; i < this.plans.length; i++) {
       if (this.plans[i].id === plan.id) {
         this.plans[i] = plan;
-        for (const childPlan of this.plans[i].childPlans) {
-          childPlan.parent = plan;
+        if (this.plans[i].childPlans !== null) {
+          // tslint:disable-next-line:prefer-for-of
+          for (let l = 0; l < this.plans[i].childPlans.length; l++) {
+            this.plans[i].childPlans[l].parent = plan;
+          }
         }
-      } else {
-
+        this.setListCDK();
+        return true;
+      }
+      if (this.plans[i].childPlans !== null) {
+        for (let y = 0; y < this.plans[i].childPlans.length; y++) {
+          if (this.plans[i].childPlans[y].id === plan.id) {
+            this.plans[i].childPlans[y] = plan;
+            this.setListCDK();
+            return true;
+          }
+        }
       }
     }
+    this.setListCDK();
+    return false;
   }
 
   setShowDate(plan: Plan) {
