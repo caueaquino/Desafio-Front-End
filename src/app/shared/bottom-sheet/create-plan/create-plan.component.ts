@@ -40,7 +40,7 @@ export class CreatePlanComponent implements OnInit {
       cost: [null, Validators.nullValidator],
       status: ['Aguardando início', Validators.nullValidator]
     }),
-    childPlans: [null, [Validators.nullValidator]],
+    childPlans: [[], [Validators.nullValidator]],
     id: [null, [Validators.required]],
     parent: [null, [Validators.nullValidator]]
   });

@@ -28,11 +28,11 @@ export class PlansComponent implements OnInit {
   private filterList: Plan[];
 
   constructor(private planService: PlanService,
-              private dialog: MatDialog,
-              private bottomSheet: MatBottomSheet,
-              private router: Router,
-              private activeRoute: ActivatedRoute,
-              private location: Location) {
+    private dialog: MatDialog,
+    private bottomSheet: MatBottomSheet,
+    private router: Router,
+    private activeRoute: ActivatedRoute,
+    private location: Location) {
 
     this.plansList = [];
   }
@@ -46,15 +46,27 @@ export class PlansComponent implements OnInit {
   drop(event: CdkDragDrop<Plan[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      this.planService.setPlans(this.plansList);
 
     } else {
       transferArrayItem(event.previousContainer.data,
-                        event.container.data,
-                        event.previousIndex,
-                        event.currentIndex);
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+
+      for (const plan of this.plansList) {
+        for (const child of plan.childPlans) {
+          if (event.container.data[event.currentIndex].id === child.id) {
+            child.parent = plan;
+            this.planService.setPlans(this.plansList);
+            return true;
+          }
+        }
+      }
+      event.container.data[event.currentIndex].parent = null;
+      this.planService.setPlans(this.plansList);
+      return true;
     }
-    console.log(this.plansList);
-    this.planService.setPlans(this.plansList);
   }
 
   updatePlan(plan: Plan) {
