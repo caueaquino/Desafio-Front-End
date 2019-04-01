@@ -13,12 +13,12 @@ import { PlanService } from 'src/app/shared/services/plan.service';
 export class GeralViewComponent implements OnInit {
 
   private items = [
-    {name: 'Todos', qtd: 0},
-    {name: 'Meus planos', qtd: 0},
-    {name: 'Iniciados', qtd: 0},
-    {name: 'Concluídos', qtd: 0},
-    {name: 'Suspensos', qtd: 0},
-    {name: 'Cancelados', qtd: 0}
+    {name: 'Todos', qtd: 0, icon: 'data_usage', class: 'todos-card'},
+    {name: 'Meus planos', qtd: 0, icon: 'account_circle_outlined', class: 'meus-planos-card'},
+    {name: 'Iniciados', qtd: 0, icon: 'play_circle_outline', class: 'iniciados-card'},
+    {name: 'Concluídos', qtd: 0, icon: 'check_circle_outline', class: 'concluidos-card'},
+    {name: 'Suspensos', qtd: 0, icon: 'query_builder', class: 'suspensos-card'},
+    {name: 'Cancelados', qtd: 0, icon: 'not_interested', class: 'cancelados-card'}
   ];
 
   constructor(private planService: PlanService,

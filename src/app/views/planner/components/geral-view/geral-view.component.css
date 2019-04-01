@@ -40,6 +40,13 @@ button:focus {
     outline-style: none;
 }
 
+mat-icon {
+    font-size: 25px;
+    margin-right: 5px;
+    margin-bottom: -10px!important;
+    
+}
+
 span {
     min-width: 250px;
     color: white;
@@ -47,3 +54,27 @@ span {
     font-weight: 500;
     margin: 5px;
 }
+/* 
+.todos-card {
+    background-image: linear-gradient(rgb(143, 143, 143), rgb(160, 160, 160), rgb(199, 199, 199));
+}
+
+.meus-planos-card {
+    background-image: linear-gradient(rgb(255, 160, 52), rgb(255, 186, 95),rgb(255, 214, 137));
+}
+
+.iniciados-card {
+    background-image: linear-gradient(rgb(113, 135, 255), rgb(130, 167, 255), rgb(148, 196, 255));
+}
+
+.concluidos-card {
+    background-image: linear-gradient(rgb(130, 255, 81), rgb(154, 255, 140), rgb(157, 255, 190));
+}
+
+.suspensos-card {
+    background-image: linear-gradient(rgb(255, 235, 52), rgb(255, 232, 102), rgb(233, 252, 149));
+}
+
+.cancelados-card {
+    background-image: linear-gradient(rgb(255, 77, 77), rgb(255, 122, 122), rgb(255, 181, 159));
+} */

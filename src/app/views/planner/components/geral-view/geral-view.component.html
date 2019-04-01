@@ -2,9 +2,9 @@
 
 
 <section>
-    <mat-card *ngFor="let item of items">
+    <mat-card *ngFor="let item of items" class="{{item.class}}">
         <button (click)="goItem(item.name)">
-            <span>{{item.name}}</span>
+            <span><mat-icon>{{item.icon}}</mat-icon>{{item.name}}</span>
             <span>{{item.qtd}}</span>
         </button>
     </mat-card>

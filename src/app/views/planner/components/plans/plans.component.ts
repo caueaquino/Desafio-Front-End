@@ -28,11 +28,11 @@ export class PlansComponent implements OnInit {
   private filterList: Plan[];
 
   constructor(private planService: PlanService,
-    private dialog: MatDialog,
-    private bottomSheet: MatBottomSheet,
-    private router: Router,
-    private activeRoute: ActivatedRoute,
-    private location: Location) {
+              private dialog: MatDialog,
+              private bottomSheet: MatBottomSheet,
+              private router: Router,
+              private activeRoute: ActivatedRoute,
+              private location: Location) {
 
     this.plansList = [];
   }

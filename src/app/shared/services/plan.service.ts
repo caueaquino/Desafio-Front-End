@@ -256,7 +256,17 @@ export class PlanService {
   updatePlan(plan: Plan) {
     for (let i = 0; i < this.plans.length; i++) {
       if (this.plans[i].id === plan.id) {
-        this.plans[i] = plan;
+        if (plan.parent !== null) {
+          this.plans.splice(i, 1);
+          // tslint:disable-next-line:prefer-for-of
+          for (let o = 0; o < this.plans.length; o++) {
+            if (this.plans[o].id === plan.parent.id) {
+              this.plans[o].childPlans.push(plan);
+            }
+          }
+        } else {
+          this.plans[i] = plan;
+        }
         if (this.plans[i].childPlans !== null) {
           // tslint:disable-next-line:prefer-for-of
           for (let l = 0; l < this.plans[i].childPlans.length; l++) {
@@ -269,7 +279,12 @@ export class PlanService {
       if (this.plans[i].childPlans !== null) {
         for (let y = 0; y < this.plans[i].childPlans.length; y++) {
           if (this.plans[i].childPlans[y].id === plan.id) {
-            this.plans[i].childPlans[y] = plan;
+            if (plan.parent === null) {
+              this.plans[i].childPlans.splice(y, 1);
+              this.plans.push(plan);
+            } else {
+              this.plans[i].childPlans[y] = plan;
+            }
             this.setListCDK();
             return true;
           }
