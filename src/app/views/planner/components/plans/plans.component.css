@@ -58,6 +58,7 @@ mat-expansion-panel:hover {
 
 .internal-plans {
     margin-top: 10px;
+    min-height: 30px;
     /* border-top: 2px solid rgba(0, 0, 0, 0.178); */
 }
 

@@ -74,6 +74,10 @@ export class CreatePlanComponent implements OnInit {
     if (this.formPlan.valid) {
       const dialogConfirm = this.dialog.open(ConfirmCreatePlanDialogComponent);
 
+      if (this.formPlan.value.parent !== null && this.formPlan.value.parent.id === this.formPlan.value.id) {
+        this.formPlan.value.parent = null;
+      }
+
       dialogConfirm.beforeClose().subscribe(res => {
         if (dialogConfirm.componentInstance.res) {
           this.formPlan.patchValue(this.planService.setShowDate(this.formPlan.value));

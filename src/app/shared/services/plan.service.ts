@@ -72,7 +72,7 @@ export class PlanService {
     this.listCDK = ['root'];
 
     for (const plan of this.plans) {
-      this.listCDK.push(String(plan.id));
+      this.listCDK.push(plan.id + '');
     }
     console.log(this.listCDK);
   }
@@ -101,6 +101,7 @@ export class PlanService {
 
   setPlans(plans) {
     this.plans = plans;
+    this.setListCDK();
   }
 
   getAllPlans() {
@@ -234,6 +235,7 @@ export class PlanService {
 
   createPlan(plan: Plan) {
     this.plans.push(plan);
+    this.setListCDK();
   }
 
   createChildPlan(plan) {
