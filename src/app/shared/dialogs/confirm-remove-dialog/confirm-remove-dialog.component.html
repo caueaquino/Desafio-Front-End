@@ -3,7 +3,9 @@
 <div class="dialog-container">
   <h3 auto-focus>Confirmar remoção ?</h3>
 
-  <button mat-raised-button (click)="confirmRemove()">Confirmar</button>
+  <section>
+    <button mat-raised-button class="main-button" (click)="confirmRemove()">Confirmar</button>
 
-  <button mat-raised-button (click)="cancelRemove()">Cancelar</button>
+    <button mat-button class="secundary-button" (click)="cancelRemove()">Cancelar</button>
+  </section>
 </div>

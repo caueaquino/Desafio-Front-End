@@ -4,7 +4,7 @@ import { MatDialogRef } from '@angular/material';
 @Component({
   selector: 'app-confirm-remove-dialog',
   templateUrl: './confirm-remove-dialog.component.html',
-  styleUrls: ['./confirm-remove-dialog.component.css']
+  styleUrls: ['../dialog.component.css']
 })
 export class ConfirmRemoveDialogComponent implements OnInit {
 

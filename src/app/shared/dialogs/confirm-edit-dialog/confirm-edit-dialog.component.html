@@ -3,7 +3,9 @@
 <div class="dialog-container">
   <h3 auto-focus>Confirmar edição?</h3>
 
-  <button mat-raised-button (click)="confirmEdit()">Confirmar</button>
+  <section>
+    <button mat-raised-button class="main-button" (click)="confirmEdit()">Confirmar</button>
 
-  <button mat-raised-button (click)="cancelEdit()">Cancelar</button>
+    <button mat-raised-button class="secundary-button" (click)="cancelEdit()">Cancelar</button>
+  </section>
 </div>

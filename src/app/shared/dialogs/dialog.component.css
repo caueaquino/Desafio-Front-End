@@ -9,21 +9,37 @@
 }
 
 h3 {
+    width: 100%;
+    text-align: left;
     margin-top: 15px;
     margin-bottom: 20px;
     font-size: 14pt;
 }
 
+section {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-end;
+}
+
 button {
     font-size: 12pt;
-    margin-bottom: 15px;
+    transition: all 0.2s;
+    min-width: 40%;
+}
+
+.main-button {
     color: white;
     background-color: rgb(61, 161, 255);
-    transition: all 0.2s;
-    min-width: 50%;
+}
+
+.secundary-button {
+    color: rgb(61, 161, 255);
+    background-color: rgba(255, 255, 255, 0);
 }
 
 button:hover {
     -webkit-transform: scale(1.1);
-    background-color: rgb(100, 180, 255);
 }

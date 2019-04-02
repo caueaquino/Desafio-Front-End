@@ -5,7 +5,7 @@ import { MatDialogRef } from '@angular/material';
 @Component({
   selector: 'app-sucess-create-plan-type-dialog',
   templateUrl: './sucess-create-plan-type-dialog.component.html',
-  styleUrls: ['./sucess-create-plan-type-dialog.component.css']
+  styleUrls: ['../dialog.component.css']
 })
 export class SucessCreatePlanTypeDialogComponent implements OnInit {
 

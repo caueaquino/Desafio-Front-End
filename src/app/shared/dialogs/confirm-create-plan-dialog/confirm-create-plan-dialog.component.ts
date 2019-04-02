@@ -6,7 +6,7 @@ import { MatDialogRef, MatBottomSheetRef } from '@angular/material';
 @Component({
   selector: 'app-confirm-create-plan-dialog',
   templateUrl: './confirm-create-plan-dialog.component.html',
-  styleUrls: ['./confirm-create-plan-dialog.component.css']
+  styleUrls: ['../dialog.component.css']
 })
 export class ConfirmCreatePlanDialogComponent implements OnInit {
 
